@@ -91,16 +91,16 @@ text-align: center;
 
 
 .body{
-margin-left: 2.5%;
-margin-right: 2.5%;
-width: 95%;
+margin-left: 1%;
+margin-right: 1%;
+width: 98%;
 justify-content: center;
 text-align: center;
 align-items: center;
 background-color: blanchedalmond; 
 font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 text-size-adjust: auto;
-text-size-adjust: 80%;
+text-size-adjust: 50%;
 text-size-adjust: inherit;
 }
 
@@ -726,12 +726,11 @@ text-transform: none;
           Body 
 #######################################################################################################################################*/
 
-
-.body_grid{  
-  text-align: center;
+.body_grid { 
   background-color: blanchedalmond;
+  text-align: center;
   display: grid;
-  grid-template-columns: repeat(3, 33%);
+  grid-template-columns: repeat(3, 300px);
   grid-template-rows: 300px 425px;
   gap: 1% 1%;
   grid-auto-flow: row;
@@ -739,63 +738,8 @@ text-transform: none;
   justify-items: center;
   align-items: center;
   grid-template-areas:
-  "Gender Gender Gender"
-  ". . .";
-  width: 100%;
-  height: 800px;
-}
-
-
-.bodysize_grid { 
-  background-color: blanchedalmond;
-  text-align: center;
-  display: grid;
-  grid-template-columns: repeat(4, 300px);
-  grid-template-rows: 300px 425px;
-  gap: 1% 1%;
-  grid-auto-flow: row;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  grid-template-areas:
-    "b_01 b_01 b_01 b_01"
-    ". . . .";
-  width: 100%;
-  height: 800px;
-}
-
-.bodyweight_grid { 
-  background-color: blanchedalmond;
-  text-align: center;
-  display: grid;
-  grid-template-columns: repeat(4, 300px);
-  grid-template-rows: 300px 425px;
-  gap: 1% 1%;
-  grid-auto-flow: row;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  grid-template-areas:
-    "b_02 b_02 b_02 b_02"
-    ". . . .";
-  width: 100%;
-  height: 800px;
-}
-
-.bodyfit_grid { 
-  background-color: blanchedalmond;
-  text-align: center;
-  display: grid;
-  grid-template-columns: repeat(4, 300px);
-  grid-template-rows: 300px 425px;
-  gap: 1% 1%;
-  grid-auto-flow: row;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  grid-template-areas:
-    "b_03 b_03 b_03 b_03"
-    ". . . .";
+    "b_01 b_01 b_01"
+    ". . . ";
   width: 100%;
   height: 800px;
 }
@@ -804,81 +748,6 @@ text-transform: none;
   background-color: blanchedalmond;
   text-align: center;
   display: grid;
-  grid-template-columns: repeat(4, 24%);
-  grid-template-rows: 300px 400px;
-  gap: 1% 1%;
-  grid-auto-flow: row;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  grid-template-areas:
-    "b_04 b_04 b_04 b_04"
-    ". . . .";
-  width: 100%;
-  height: 800px;
-}
-
-
-
-.bodybread_grid { 
-  background-color: blanchedalmond;
-  text-align: center;
-  display: grid;
-  grid-template-columns: repeat(4, 24%);
-  grid-template-rows: 300px 400px 400px;
-  gap: 1% 1%;
-  grid-auto-flow: row;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  grid-template-areas:
-    "b_05 b_05 b_05 b_05"
-    ". . . ."
-    ". . . .";
-  width: 100%;
-  height: 800px;
-}
-
-.bodybutter_grid { 
-  background-color: blanchedalmond;
-  text-align: center;
-  display: grid;
-  grid-template-columns: repeat(4, 24%);
-  grid-template-rows: 300px 400px;
-  gap: 1% 1%;
-  grid-auto-flow: row;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  grid-template-areas:
-    "b_06 b_06 b_06 b_06"
-    ". . . .";
-  width: 100%;
-  height: 800px;
-}
-
-.bodyextras_grid { 
-  background-color: blanchedalmond;
-  text-align: center;
-  display: grid;
-  grid-template-columns: repeat(4, 24%);
-  grid-template-rows: 300px 400px;
-  gap: 1% 1%;
-  grid-auto-flow: row;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  grid-template-areas:
-    "b_07 b_07 b_07 b_07"
-    ". . . .";
-  width: 100%;
-  height: 800px;
-}
-
-.bodydrawbacks_grid { 
-  background-color: blanchedalmond;
-  text-align: center;
-  display: grid;
   grid-template-columns: repeat(5, 19%);
   grid-template-rows: 300px 400px;
   gap: 1% 1%;
@@ -887,29 +756,12 @@ text-transform: none;
   justify-items: center;
   align-items: center;
   grid-template-areas:
-    "b_08 b_08 b_08 b_08 b_08"
+    "b_01 b_01 b_01 b_01 b_01"
     ". . . . .";
   width: 100%;
   height: 800px;
 }
 
-.bodydesire_grid { 
-  background-color: blanchedalmond;
-  text-align: center;
-  display: grid;
-  grid-template-columns: repeat(5, 19%);
-  grid-template-rows: 300px 400px;
-  gap: 1% 1%;
-  grid-auto-flow: row;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  grid-template-areas:
-    "b_09 b_09 b_09 b_09 b_09"
-    ". . . . .";
-  width: 100%;
-  height: 800px;
-}
 
 .pic_16{
   border-radius: 6px;
@@ -922,78 +774,6 @@ text-transform: none;
 }
 
 .b_09{ grid-area: b_09; 
-  font-size: 75PX;
-  letter-spacing: 12px;
-  word-spacing: 4.2px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  text-align: center;
-  background-color: blanchedalmond;
-  padding-top: 0;
-  padding: bottom 0;
-  color: rgba(21, 14, 6, 0.836);
-}
-
-.b_08{ grid-area: b_08; 
-  font-size: 75PX;
-  letter-spacing: 12px;
-  word-spacing: 4.2px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  text-align: center;
-  background-color: blanchedalmond;
-  padding-top: 0;
-  padding: bottom 0;
-  color: rgba(21, 14, 6, 0.836);
-}
-
-.b_07{ grid-area: b_07; 
-  font-size: 75PX;
-  letter-spacing: 12px;
-  word-spacing: 4.2px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  text-align: center;
-  background-color: blanchedalmond;
-  padding-top: 0;
-  padding: bottom 0;
-  color: rgba(21, 14, 6, 0.836);
-}
-
-.b_06{ grid-area: b_06; 
-  font-size: 75PX;
-  letter-spacing: 12px;
-  word-spacing: 4.2px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  text-align: center;
-  background-color: blanchedalmond;
-  padding-top: 0;
-  padding: bottom 0;
-  color: rgba(21, 14, 6, 0.836);
-}
-
-.b_05{ grid-area: b_05; 
-  font-size: 75PX;
-  letter-spacing: 12px;
-  word-spacing: 4.2px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  text-align: center;
-  background-color: blanchedalmond;
-  padding-top: 0;
-  padding: bottom 0;
-  color: rgba(21, 14, 6, 0.836);
-}
-
-.b_04{ grid-area: b_04; 
-  font-size: 75PX;
-  letter-spacing: 12px;
-  word-spacing: 4.2px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  text-align: center;
-  background-color: blanchedalmond;
-  padding-top: 0;
-  padding: bottom 0;
-  color: rgba(21, 14, 6, 0.836);
-}
-
-.b_03{ grid-area: b_03; 
   font-size: 75PX;
   letter-spacing: 12px;
   word-spacing: 4.2px;
@@ -1028,19 +808,6 @@ text-transform: none;
   padding: bottom 0;
   color: rgba(21, 14, 6, 0.836);
 }
-
-.gender_grid { grid-area: Gender; 
-  font-size: 75PX;
-  letter-spacing: 12px;
-  word-spacing: 4.2px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  text-align: center;
-  background-color: blanchedalmond;
-  padding-top: 0;
-  padding: bottom 0;
-  color: rgba(21, 14, 6, 0.836);
-}
-
 
 .bodys_01 { grid-area: Gender; 
     font-size: 75PX;
@@ -1125,28 +892,6 @@ opacity: 1;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-}
-
-.classes_grid {
-  padding-top: 100px;
-  text-align: center;
-  display: grid; 
-  grid-template-columns: repeat(3, 28%); 
-  grid-template-rows: repeat(5, 700px); 
-  gap: 2% 2%; 
-  row-gap: 3%;
-  grid-template-areas: 
-  ". . ."
-  ". . ."
-  ". . ."
-  ". . ."
-  ". . ."; 
-  justify-content: center; 
-  justify-items: center; 
-  align-items: center; 
-  width: 100%; 
-  height: 4200px; 
-  background-color: blanchedalmond;
 }
 
 .pic_06{

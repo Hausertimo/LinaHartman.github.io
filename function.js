@@ -448,40 +448,38 @@ function setbody(a){
         case 3: size="small";           break;
         case 4: size="avarage";         break;
         case 5: size="tall";            break;
-        case 6: size="large";           break;
 
-        case 7: weight="skinny";        break;
-        case 8: weight="avarage";       break;
-        case 9: weight="chubby";        break;
-        case 10: weight="fat";          break;
+        case 6: weight="skinny";        break;
+        case 7: weight="avarage";       break;
+        case 8: weight="chubby";        break;
 
-        case 11: fitness="untrained";   break;
-        case 12: fitness="avarage";     break;
-        case 13: fitness="fit";         break;
-        case 14: fitness="trained";     break;
+        case 9:  fitness="untrained";   break;
+        case 10: fitness="avarage";     break;
+        case 11: fitness="fit";         break;
 
-        case 15: face="masculin";       break;
-        case 16: face="neutral";        break;
-        case 17: face="feminine";       break;
-        case 18: face="girly";          break;
+        case 12: face="manly";          break;
+        case 13: face="masculin";       break;
+        case 14: face="neutral";        break;
+        case 15: face="feminine";       break;
+        case 16: face="girly";          break;
 
-        case 19: hair_color="blond";    break;
-        case 20: hair_color="brown";    break;
-        case 21: hair_color="black";    break;
-        case 22: hair_color="red";      break;
-        case 23: hair_color="violet";   break;
-        case 24: hair_color="blue";     break;
-        case 25: hair_color="pink";     break;
-        case 26: hair_color="white";    break;
+        case 17: hair_color="blond";    break;
+        case 18: hair_color="brown";    break;
+        case 19: hair_color="black";    break;
+        case 20: hair_color="red";      break;
+        case 21: hair_color="violet";   break;
+        case 22: hair_color="blue";     break;
+        case 23: hair_color="pink";     break;
+        case 24: hair_color="white";    break;
 
-        case 27: eye_color="blue";      break;
-        case 28: eye_color="brown";     break;
-        case 29: eye_color="green";     break;
-        case 30: eye_color="grey";      break;
-        case 31: eye_color="violet";    break;
-        case 32: eye_color="white";     break;
-        case 33: eye_color="pink";      break;
-        case 34: eye_color="red";       break;
+        case 25: eye_color="blue";      break;
+        case 26: eye_color="brown";     break;
+        case 27: eye_color="green";     break;
+        case 28: eye_color="grey";      break;
+        case 29: eye_color="violet";    break;
+        case 30: eye_color="white";     break;
+        case 31: eye_color="pink";      break;
+        case 32: eye_color="red";       break;
 
         default: alert("there was non selected"); break;
     }
@@ -492,70 +490,67 @@ function setbody(a){
         case 0:
         case 1:
         case 2:
-            typeold  = "gen_"+b;
-            typenew  = "gen_"+a;
+            typeold  = "bod_"+b;
+            typenew  = "bod_"+a;
             b=a;
             break;
 
         case 3: 
         case 4: 
-        case 5: 
-        case 6: 
-            typeold  = "siz_"+c;
-            typenew  = "siz_"+a;
+        case 5:
+            typeold  = "bod_"+c;
+            typenew  = "bod_"+a;
             c=a;
             break;
 
+        case 6: 
         case 7: 
         case 8: 
-        case 9: 
-        case 10: 
-            typeold  = "wei_"+d;
-            typenew  = "wei_"+a;
+            typeold  = "bod_"+d;
+            typenew  = "bod_"+a;
             d=a;
             break;
-
-        case 11: 
+        
+        case 9: 
+        case 10: 
+        case 11:  
+            typeold  = "bod_"+e;
+            typenew  = "bod_"+a;
+            e=a;
+            break;
         case 12: 
         case 13: 
         case 14: 
-            typeold  = "fit_"+e;
-            typenew  = "fit_"+a;
-            e=a;
-            break;
-
         case 15: 
         case 16: 
-        case 17: 
-        case 18: 
-            typeold  = "fac_"+f;
-            typenew  = "fac_"+a;
+            typeold  = "bod_"+f;
+            typenew  = "bod_"+a;
             f=a;
             break;
 
-        case 19: 
-        case 20: 
-        case 21:
-        case 22:    
+        case 17: 
+        case 18: 
+        case 19:
+        case 20:    
+        case 21: 
+        case 22: 
         case 23: 
         case 24: 
-        case 25: 
-        case 26: 
-            typeold  = "hai_"+g;
-            typenew  = "hai_"+a;
+            typeold  = "bod_"+g;
+            typenew  = "bod_"+a;
             g=a;
             break;
         
+        case 25: 
+        case 26: 
         case 27: 
         case 28: 
         case 29: 
         case 30: 
         case 31: 
         case 32: 
-        case 33: 
-        case 34: 
-            typeold  = "eye_"+h;
-            typenew  = "eye_"+a;
+            typeold  = "bod_"+h;
+            typenew  = "bod_"+a;
             h=a;
             break;   
         
