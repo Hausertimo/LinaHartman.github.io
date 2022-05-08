@@ -38,8 +38,25 @@ function mathRandomInt(a, b) {
     return function(a, b) { return compare(a, b) * direction; };
   }
 
+  function opacitybyid(a,b){document.getElementById(a).style.opacity = b}
+
   setTimeout(function(){}, timeout);
 
+function setopacitybyid(id, opacity){
+    document.getElementById(id).style.opacity = opacity;
+}
+
+function uncheckbyid(id){
+    document.getElementById(id).checked = false;
+}
+
+function checkbyid(id){
+    document.getElementById(id).checked = true;
+}
+
+function getcheckboxbyid(id){
+    return document.getElementById(id).checked;
+}
 
 //#######################################################################################################################################
 //                                                          Stat Bar
@@ -596,6 +613,44 @@ function setmind(c){
     return SET_MIND;
 }
 
+//#######################################################################################################################################
+//                                                            Training
+//#######################################################################################################################################
+
+var SET_TRAIN = [], lock_04 =0;
+for (var i = 0; i <= 60; ++i) {
+        SET_TRAIN[i] = "tra_"+i;
+        SET_TRAIN[i]=false;
+    }
+
+
+function settrain(a){
+
+
+    switch(a){
+        case 0: var price = 35; break;  
+        case 1: price = 30; if(getcheckboxbyid("tr_2")==true){checkbyid("tr_1")} break;  
+        case 2: price = 50; if(getcheckboxbyid("tr_1")==false){uncheckbyid("tr_2")}else if(getcheckboxbyid("tr_3")==true){checkbyid("tr_2")} break; 
+        case 3: price = 50; if(getcheckboxbyid("tr_2")==false){uncheckbyid("tr_3")} break;
+        case 4: price = 50; if(getcheckboxbyid("tr_5")==true){checkbyid("tr_4")} break;             
+        case 5: price = 50; if(getcheckboxbyid("tr_4")==false){uncheckbyid("tr_5")} break;         
+        case 6: break;
+        case 7: break;
+        case 8: break;
+        case 9: break;
+        case 10: break;
+        case 11: break;
+        default: break;
+    }
+
+    console.log(getcheckboxbyid("tr_"+a))
+
+    if (getcheckboxbyid("tr_"+a)){setopacitybyid(("tra_"+a),0.5);} else if (getcheckboxbyid("tr_"+a) == false){setopacitybyid(("tra_"+a),1);}
+
+}
+
+
+
 
 //#######################################################################################################################################
 //                                                          Patreon Content
@@ -619,7 +674,6 @@ function patreon(){
  
 
 }
-
 
 
 //#######################################################################################################################################
