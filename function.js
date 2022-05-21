@@ -62,7 +62,7 @@ function getcheckboxbyid(id){
 //                                                          Stat Bar
 //#######################################################################################################################################
 
-var PT, ACH, ACM, ACL, ACD, ARMORH = 0, ARMORM = 0, ARMORL = 0, Shield = 0, HPB = 0, PPB = 0, ACB = 0, MPB = 0;
+var PT, ACH, ACM, ACL, ACD, ARMORH = 0, ARMORM = 0, ARMORL = 0, Shield = 0, HPB = 0, PPB = 0, ACB = 0, MPB = 0, STR_modifier = 0, DEX_modifier = 0;
 
 setInterval(function updatev(){
 
@@ -89,6 +89,13 @@ setInterval(function updatev(){
 
     //set Body properties
     SET_BODY =[gender, size, weight, fitness, face, hair_color, eye_color];
+
+    //set atck
+   STR_modifier = ((STAT_ARRAY[0]-10)/2);
+   DEX_modifier = ((STAT_ARRAY[1]-10)/2);
+    
+    //setdmg 
+
 
     for(i=0;i<12;i++){
         if(i<6)
@@ -617,38 +624,85 @@ function setmind(c){
 //                                                            Training
 //#######################################################################################################################################
 
-var SET_TRAIN = [], lock_04 =0;
-for (var i = 0; i <= 60; ++i) {
-        SET_TRAIN[i] = "tra_"+i;
-        SET_TRAIN[i]=false;
-    }
+
+var  tshield = false; tlarmor = false, tmarmor = false, tharmor = false, tlweapon = false, tmweapon = false;
+var SET_TRAIN=[tshield, tlarmor, tmarmor, tharmor, tlweapon, tmweapon];
+
+//var SET_TRAIN = [], lock_04 =0;
+//for (var i = 0; i <= 60; ++i) {
+//       SET_TRAIN[i] = "tra_"+i;
+//       SET_TRAIN[i]=false;
+//   }
 
 
 function settrain(a){
 
+    price = 0;
 
     switch(a){
         case 0: var price = 35; break;  
-        case 1: price = 30; if(getcheckboxbyid("tr_2")==true){checkbyid("tr_1")} break;  
-        case 2: price = 50; if(getcheckboxbyid("tr_1")==false){uncheckbyid("tr_2")}else if(getcheckboxbyid("tr_3")==true){checkbyid("tr_2")} break; 
-        case 3: price = 50; if(getcheckboxbyid("tr_2")==false){uncheckbyid("tr_3")} break;
-        case 4: price = 50; if(getcheckboxbyid("tr_5")==true){checkbyid("tr_4")} break;             
-        case 5: price = 50; if(getcheckboxbyid("tr_4")==false){uncheckbyid("tr_5")} break;         
-        case 6: break;
-        case 7: break;
-        case 8: break;
-        case 9: break;
-        case 10: break;
-        case 11: break;
+        case 1: if(getcheckboxbyid("tr_2")==true){checkbyid("tr_1")}else{ price = 30;} break;  
+        case 2: if(getcheckboxbyid("tr_1")==false){uncheckbyid("tr_2")}else if(getcheckboxbyid("tr_3")==true){checkbyid("tr_2")}else{price = 50;} break; 
+        case 3: if(getcheckboxbyid("tr_2")==false){uncheckbyid("tr_3")}else{price = 50; } break;
+        case 4: if(getcheckboxbyid("tr_5")==true){checkbyid("tr_4")}else{price = 50; } break;             
+        case 5: if(getcheckboxbyid("tr_4")==false){uncheckbyid("tr_5")}else{price = 50; } break;         
+        case 6: price = 50; break;
+        case 7: price = 50; break;
+        case 8: price = 50; break;
+        case 9: price = 50; break;
+        case 10: price = 50; break;
+        case 11: price = 50;break;
         default: break;
     }
 
-    console.log(getcheckboxbyid("tr_"+a))
+    for(i=0;i<6;i++){
+     SET_TRAIN[i] = getcheckboxbyid("tr_"+i)
+    }
 
-    if (getcheckboxbyid("tr_"+a)){setopacitybyid(("tra_"+a),0.5);} else if (getcheckboxbyid("tr_"+a) == false){setopacitybyid(("tra_"+a),1);}
+    if (getcheckboxbyid("tr_"+a)){setopacitybyid(("tra_"+a),0.5); PT-=price;} else if (getcheckboxbyid("tr_"+a) == false){setopacitybyid(("tra_"+a),1); PT+=price;}
 
 }
 
+//#######################################################################################################################################
+//                                                            Training
+//#######################################################################################################################################
+
+var inventory = 0, MAIN_HAND = "0", OFF_HAND = "0";
+
+var character_slots=[right_hand, left_hand, armor],  items=[], MAIN_HAND=[], OFF_HAND=[];
+
+var light_armor, medium_armor, heavy_armor,one_light_dagger, two_heavy_maul, right_hand, left_hand, armor;
+
+function buy_sell(cost, space, damagemin, damagemax, modifier, place, name, a){
+    
+if(getcheckboxbyid("bu_"+a)){
+GP-=cost;
+inventory-=space;
+place [0]=damagemin;
+place [1]=damagemax;
+place [2]=modifier;
+place [3]= name ;
+}else{
+GP+=cost;
+inventory+=space;
+place [0]="";
+place [1]="";
+place [2]="";
+place [3]="";
+}
+
+}
+
+function attack_main(){
+    ATK_HIT = mathRandomInt(1,20)+MAIN_HAND[2]
+    ATK_DMG = mathRandomInt(MAIN_HAND[0], MAIN_HAND[1])+MAIN_HAND[2]
+}
+
+function attack_off(){
+
+    ATK_HIT = mathRandomInt(1,20)+OFF_HAND[2]
+    ATK_DMG = mathRandomInt(OFF_HAND[0], OFF_HAND[1])+OFF_HAND[2]
+}
 
 
 
