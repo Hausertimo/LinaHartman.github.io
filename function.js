@@ -119,17 +119,76 @@ setInterval(function updatev(){
 //#######################################################################################################################################
 //                                                              Sidebar
 //#######################################################################################################################################
+function openSide(id,width){
+    document.getElementById(id).style.width = width;
+}
+function closeSide(id){
+    document.getElementById(id).style.width = "0";
+}
 
-function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-  }
+//#######################################################################################################################################
+//                                                              Equipped
+//#######################################################################################################################################
+
+var dragitem, inventoryslots=[];
+var equipped_0, equipped_1, equipped_2, equipped_3, equipped_4, equipped_5;
+for (i =  0; i < 24; i++){inventoryslots[i]="inventory_"+i };
+
+var boot0  = [0, 0,  "false",   "feet", "Leather Boots", 2,  5];
+
+function allowDrop(ev) {
+    ev.preventDefault();
+    
+}
   
-  function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-  }
+function drag(ev, item) {
+    ev.dataTransfer.setData("text", ev.target.id);
+    dragitem = item;
+}
+  
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+   if (getpalce(ev.target.id)){ev.target.appendChild(document.getElementById(data));}
 
+}
+
+function getpalce(targetid){
+
+    if   (document.getElementById(targetid).innerHTML == 0){
+
+        for(i=0; i<23;i++){
+            if (targetid == "inventory_"+i) return true
+        }
+
+    switch (targetid){
+        case "head":  if(dragitem[3]=="head")                       {equipped_0=dragitem; return true}else{return false;}
+        case "off":   if(dragitem[3]=="off" || 
+                         dragitem[3]=="either"||
+                         dragitem[3]=="shield")                     {equipped_1=dragitem; return true}else{return false;}
+        case "main":  if(dragitem[3]=="main"  || 
+                         dragitem[3]=="either")                     {equipped_2=dragitem; return true}else{return false;}
+        case "armor": if(dragitem[3]=="armor")                      {equipped_3=dragitem; return true}else{return false;}
+        case "feet":  if(dragitem[3]=="feet")                       {equipped_4=dragitem; return true}else{return false;}
+
+    }    
+
+}  else {return false;}
+
+}
+
+
+function buy_item(){
+    document.getElementById(free_inv_slot()).innerHTML = '<img src="https://preview.redd.it/n8jwvz0gkxg61.jpg?width=640&crop=smart&auto=webp&s=66ab9edfcf61ba4d5142221cdacf8beed3aa72cc"              class="pic_inventory" draggable="true" id="leatherboots"ondragstart="drag(event, boot0)"></div>';
+    openSide('myInventory', '500px');
+}
+
+function free_inv_slot(){
+    for (i =  0; i < 24; i++){if (document.getElementById(inventoryslots[i]).innerHTML == 0) return inventoryslots[i]; }
+
+}
+
+  
 
 //#######################################################################################################################################
 //                                                              Lootbox
@@ -662,49 +721,6 @@ function settrain(a){
     if (getcheckboxbyid("tr_"+a)){setopacitybyid(("tra_"+a),0.5); PT-=price;} else if (getcheckboxbyid("tr_"+a) == false){setopacitybyid(("tra_"+a),1); PT+=price;}
 
 }
-
-//#######################################################################################################################################
-//                                                            Training
-//#######################################################################################################################################
-
-var inventory = 0, MAIN_HAND = "0", OFF_HAND = "0";
-
-var character_slots=[right_hand, left_hand, armor],  items=[], MAIN_HAND=[], OFF_HAND=[];
-
-var light_armor, medium_armor, heavy_armor,one_light_dagger, two_heavy_maul, right_hand, left_hand, armor;
-
-function buy_sell(cost, space, damagemin, damagemax, modifier, place, name, a){
-    
-if(getcheckboxbyid("bu_"+a)){
-GP-=cost;
-inventory-=space;
-place [0]=damagemin;
-place [1]=damagemax;
-place [2]=modifier;
-place [3]= name ;
-}else{
-GP+=cost;
-inventory+=space;
-place [0]="";
-place [1]="";
-place [2]="";
-place [3]="";
-}
-
-}
-
-function attack_main(){
-    ATK_HIT = mathRandomInt(1,20)+MAIN_HAND[2]
-    ATK_DMG = mathRandomInt(MAIN_HAND[0], MAIN_HAND[1])+MAIN_HAND[2]
-}
-
-function attack_off(){
-
-    ATK_HIT = mathRandomInt(1,20)+OFF_HAND[2]
-    ATK_DMG = mathRandomInt(OFF_HAND[0], OFF_HAND[1])+OFF_HAND[2]
-}
-
-
 
 //#######################################################################################################################################
 //                                                          Patreon Content

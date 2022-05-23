@@ -168,7 +168,7 @@ text-size-adjust: inherit;
   padding-top: 60px;
 }
 
-.sidebar a {
+.sidebardiv {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
@@ -177,20 +177,27 @@ text-size-adjust: inherit;
   transition: 0.3s;
 }
 
-.sidebar a:hover {
+.sidebardiv:hover {
   color: #f1f1f1;
+  cursor: pointer;
+  
 }
 
 .sidebar .closebtn {
   position: absolute;
   top: 0;
   right: 25px;
-  font-size: 36px;
+  font-size: 30px;
   margin-left: 50px;
 }
 
+.sidebar .closebtn:hover {
+  color: #f1f1f1;
+  cursor: pointer;
+}
+
 .menubutton {
-  text-align: left;
+text-align: left;
 cursor: pointer;
 color: rgba(21, 14, 6, 0.836);
 }
@@ -200,9 +207,109 @@ color: rgba(21, 14, 6, 0.836);
 }
 
 .pic_1003{
-  width: 250px;
-  margin-top: 30%;
+  width: 150px;
+  top: 10px;
 }
+
+/*Character*/
+
+.myinnventory {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color:  rgb(218, 191, 148, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.pic_1023{
+position: absolute;
+top: 0px;
+left: 50px;
+max-height: 400px;
+}
+
+.equipped_grid {  
+  text-align: center;
+  display: grid;
+  position: absolute;
+  height: 500px;
+  width: 500px;
+  top: 0px;
+  left: 0px
+}
+
+#head {  position: absolute; height: 50px; width: 53px; top: 75px; left: 220px;}
+  
+#off {   position: absolute;height: 100px; width: 60px; top: 150px; left: 328px;}
+
+#main {  position: absolute;height: 100px; width: 60px; top: 150px; left: 107px;}
+  
+#armor {  position: absolute;height: 125px; width: 70px; top: 150px; left: 212px;}
+
+#feet {  position: absolute;height: 75px; width: 73px; top: 308px; left: 210px;}
+
+.itembox{
+background-color: antiquewhite;
+border-radius: 15px;
+border-style: solid;
+border-color: rgb(100, 67, 26);
+border-width: px; 
+opacity: 0.8;
+overflow: hidden;
+}
+
+.itembox2{
+position: absolute;
+background-color: antiquewhite;
+border-radius: 15px;
+border-style: solid;
+border-color: rgb(100, 67, 26);
+border-width: 3px; 
+opacity: 0.8; 
+height: 50px;
+width: 50px;
+overflow: hidden;
+}
+
+#inventory_0{top: 400px; left: 25px;}
+#inventory_1{top: 400px; left: 100px;}
+#inventory_2{top: 400px; left: 175px;}
+#inventory_3{top: 400px; left: 250px;}
+#inventory_4{top: 400px; left: 325px;}
+#inventory_5{top: 400px; left: 400px;}
+#inventory_6{top: 475px; left: 25px;}
+#inventory_7{top: 475px; left: 100px;}
+#inventory_8{top: 475px; left: 175px;}
+#inventory_9{top: 475px; left: 250px;}
+#inventory_10{top: 475px; left: 325px;}
+#inventory_11{top: 475px; left: 400px;}
+#inventory_12{top: 550px; left: 25px;}
+#inventory_13{top: 550px; left: 100px;}
+#inventory_14{top: 550px; left: 175px;}
+#inventory_15{top: 550px; left: 250px;}
+#inventory_16{top: 550px; left: 325px;}
+#inventory_17{top: 550px; left: 400px;}
+#inventory_18{top: 625px; left: 25px;}
+#inventory_19{top: 625px; left: 100px;}
+#inventory_20{top: 625px; left: 175px;}
+#inventory_21{top: 625px; left: 250px;}
+#inventory_22{top: 625px; left: 325px;}
+#inventory_23{top: 625px; left: 400px;}
+
+.pic_inventory{
+  width: 100%;
+  min-height: 100%;
+  cursor: move;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+#leatherboots{opacity: 1;}
+
 /* #######################################################################################################################################
           Lootboxes 
 #######################################################################################################################################*/

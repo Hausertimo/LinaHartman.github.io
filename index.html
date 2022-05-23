@@ -140,10 +140,10 @@
     <div class="bck_1"> <label for="ra_17"> <img src="/pica/dragon_01.jpg"          class="pic_1" id="rac_17"> <input type="radio" name="race" class ="hidden" onchange="setrace(23)" id="ra_17" /> <div class="t_0001">Dragon</div><div id="benefit_17"><br>A majestic race of intelligent winged creatures. Dethroned by humans and elves as the crown ofcreation, they harbour a deep-seated scorn for all mortals.</div></div>
     <div class="bck_1"> <label for="ra_18"> <img src="/pica/Elemental_01.jpg"       class="pic_1" id="rac_18"> <input type="radio" name="race" class ="hidden" onchange="setrace(23)" id="ra_18" /> <div class="t_0001">Elementals</div><div id="benefit_18"><br>Elementals are the coagulations of forces of nature into somewhat human-like shapes. Fully defined by their element, they are powerful but predictable foes.</div></div>
     <div class="bck_1"> <label for="ra_19"> <img src="/pica/elemental_titan_01.jpg" class="pic_1" id="rac_19"> <input type="radio" name="race" class ="hidden" onchange="setrace(23)" id="ra_19" /> <div class="t_0001">Titan</div><div id="benefit_19"><br>Mythical and ancient guardians of the land. Slumbering titans are often mistaken for small, rocky hills dotting the countryside.</div></div>
-    <div class="HIDDEN"> <label for="ra_22"> <img src="ARt_01.jpg"                  class="pic_1" id="rac_20"> <input type="radio" name="race" class ="hidden" onchange="setrace(23)" id="ra_20" /> <div class="t_0001">Header</div><div></div></div>
+    <div class="HIDDEN"> <label for="ra_22"> <img src=""                            class="pic_1" id="rac_20"> <input type="radio" name="race" class ="hidden" onchange="setrace(23)" id="ra_20" /> <div class="t_0001">Header</div><div></div></div>
     <div class="bck_1"> <label for="ra_21"> <img src="/pica/unknown_01.jpg"         class="pic_1" id="rac_21"> <input type="radio" name="race" class ="hidden" onchange="setrace(23)" id="ra_21" /> <div class="t_0001">Unknown</div><div id="benefit_20"><br>Whispers from the subterranean abyss insinuate the awakening of a primeval force. Beware of the depths!</div></div>
     <div class="bck_1"> <label for="ra_20"> <img src="/pica/shadows_01.jpg"         class="pic_1" id="rac_22"> <input type="radio" name="race" class ="hidden" onchange="setrace(23)" id="ra_22" /> <div class="t_0001">Shadows</div><div id="benefit_21"><br>Creatures of pure darkness, dwelling in the cracks and crevices of the mortal realm. They are beyond good and evil, defined solely by an insatiable hunger for life.</div></div>
-    <div class="HIDDEN"> <label for="ra_23"> <img src="ARt_01.jpg"                  class="pic_1" id="rac_23"> <input type="radio" name="race" class ="hidden" onchange="setrace(23)" id="ra_23" /> <div class="t_0001">HEADER</div><div></div></div>
+    <div class="HIDDEN"> <label for="ra_23"> <img src=""                            class="pic_1" id="rac_23"> <input type="radio" name="race" class ="hidden" onchange="setrace(23)" id="ra_23" /> <div class="t_0001">HEADER</div><div></div></div>
 
   </div>
 
@@ -323,7 +323,7 @@
   <div class="titel">Store</div>
   <div class="store_grid">
       <div class="st_01"> <img src="/pica/store_01.jpg" alt="" class="pic_09"> </div>
-      <div class="bck_1"> <label for="bu_0">  <img src="/pica/shield_03.jpg"          class="pic_08" id="tra_0">  <input type="checkbox"  class ="hidden" onclick="buy_sell(5,-7,1,4 , DEX_modifier, MAIN_HAND,'Dagger' , 0) "  id="bu_0" />  <div class="t_0002">Dagger</div><div id=""><br>.</div><div></div></div>
+      <div class="bck_1"> <label for="bu_0">  <img src="/pica/shield_03.jpg"          class="pic_08" id="tra_0">  <input type="checkbox"  class ="hidden" onclick="buy_item()"  id="bu_0" />  <div class="t_0002">Buy sth</div><div id=""><br>.</div><div></div></div>
       <div class="bck_1"> <label for="bu_1">  <img src="/pica/armor_light_01.jpg"     class="pic_08" id="tra_1">  <input type="checkbox"  class ="hidden" onclick="buy_sell(5,-7,1,4 , DEX_modifier, OFF_HAND, 'Dagger' , 1) "  id="bu_1" />  <div class="t_0002">Dagger Offhand</div><div id=""><br>.</div></div>
       <div class="bck_1"> <label for="tr_2">  <img src="/pica/armor_medium_01.jpg"    class="pic_08" id="tra_2">  <input type="checkbox"  class ="hidden" onclick="buyitem(2)"  id="tr_2" />  <div class="t_0002">Handaxe</div><div id=""><br>.</div></div>
       <div class="bck_1"> <label for="tr_3">  <img src="/pica/armor_heavy.jpg"        class="pic_08" id="tra_3">  <input type="checkbox"  class ="hidden" onclick="buyitem(3)"  id="tr_3" />  <div class="t_0002">Quarterstaff</div><div id=""><br>.</div></div>
@@ -359,18 +359,69 @@
 
   <!--Sidebar-->
   <div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-    <a href="#">Character</a>
-    <a href="#">Equipped</a>
-    <a href="#">Inventory</a>
-    <a href="#">Level Up</a>
+    <div href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</div>
+    <div class="sidebardiv" onclick="closeSide('mySidebar'), openSide('myCharacter', '750px')">Character</div>
+    <div class="sidebardiv" onclick="closeSide('mySidebar'), openSide('myInventory', '500px')">Equipped</div>
+    <div class="sidebardiv" onclick="closeSide('mySidebar')" >World</div>
+    <div class="sidebardiv" onclick="closeSide('mySidebar')" >Lore</div>
+    <div class="sidebardiv" onclick="closeSide('mySidebar'), openSide('mySettings', '400px')" >Settings</div>
+    <div class="sidebardiv" onclick="closeSide('mySidebar')" >Patreon</div>
+  </div>
 
-  <div ><img src="/pica/character_01.png" alt="" class="pic_1003"><br><br></div>
+  <!-- Character-->
+  <div id="myCharacter" class="sidebar">
+    <div href="javascript:void(0)" class="closebtn" onclick="closeSide('myCharacter')">×</div>
+    <div class="sidebardiv">Char Name</div>
+    <div class="sidebardiv">Stats</div>
+  </div>
+
+  <!-- Settings-->
+  <div id="mySettings" class="sidebar">
+    <div href="javascript:void(0)" class="closebtn" onclick="closeSide('mySettings')">×</div>
+    <div class="sidebardiv"><input type="checkbox">Brutal Content</div>
+    <div class="sidebardiv"><input type="checkbox">Open Inv. when Buying</div>
+  </div>
 
 
-  <a href="#">World</a>
-  <a href="#">Lore</a>
-  <a href="#">Info</a>
+
+  
+  <!--Equipped-Sidebar-->
+  <div id="myInventory" class="sidebar">
+    <img src="/pica/character_01.png" alt="" class="pic_1023">
+    <div class="equipped_grid">
+      <div id="head"      class="itembox" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+      <div id="off"       class="itembox" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+      <div id="main"      class="itembox" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+      <div id="armor"     class="itembox" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+      <div id="feet"      class="itembox" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+    </div>
+    <div class="closebtn"  onclick="closeSide('myInventory')">×</div>
+    <div class="inventory">
+      <div class="itembox2" id="inventory_0" ondrop="drop(event)" ondragover="allowDrop(event)"><img src="https://thumbs.dreamstime.com/z/d-illustration-full-suit-armor-isolated-white-background-79870258.jpg"                            class="pic" draggable="true" id="mediumarmor" ondragstart="drag(event, armor1)"></div>
+      <div class="itembox2" id="inventory_1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_7" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_9" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_10" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_11" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_12" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_13" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_14" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_15" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_16" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_17" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_18" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_19" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_20" ondrop="drop(event)" ondragover="dallowDrop(event)"></div>
+      <div class="itembox2" id="inventory_21" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_22" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox2" id="inventory_23" onclick="buy_item()"></div>
+    </div>
   </div>
 
   <!--Statview-->
@@ -403,9 +454,13 @@
 
   </div>
 
-  <a href="https://www.patreon.com/Lina_Cyoa"><img style="max-width: 100%;" src="/.png" alt=""></a>
+
+  <!--
+  <a href="https://www.patreon.com/Lina_Cyoa"><img style="max-width: 100%;" src="/. alt=""></a>
+  -->
 
     </div>
   </body>
+  
 
 </html>
