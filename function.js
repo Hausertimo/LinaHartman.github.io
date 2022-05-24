@@ -58,6 +58,10 @@ function getcheckboxbyid(id){
     return document.getElementById(id).checked;
 }
 
+function readbyid(id){
+    return document.getElementById(id).innerHTML
+}
+
 //#######################################################################################################################################
 //                                                          Stat Bar
 //#######################################################################################################################################
@@ -126,15 +130,45 @@ function closeSide(id){
     document.getElementById(id).style.width = "0";
 }
 
+
+
+
+
+
+
+
+//#######################################################################################################################################
+//                                                              Items
+//#######################################################################################################################################
+
+
+
+var            //dmg dice mod    hand      name/id     weight price
+dagger         = [4,  1, "dex", "either", "dagger"      ,1 , 10, "/pica/dagger_01.png"],
+shortsword     = [6,  1, "str", "either", "shortsword" ,12, 10, "/pica/sword_01.png"],
+lightaxe       = [6,  1, "str", "either", "lightaxe"   ,12, 10, "/pica/axe_01.png"],
+lighthammer    = [6,  1, "str", "either", "lighthammer"   ,17, 8, "/pica/hammer_01.png"],
+rapier         = [6,  1, "dex", "either", "rapier"      ,12, 10],
+longsword      = [8,  1, "str",   "main", "longsword"   ,24, 10],
+shield         = [0,  2, "false", "shield","shield"    ,8 , 10, "/pica/shield_06.png"],
+
+
+armorlight         = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_03.png"],
+armormedium        = [0, 14,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_01.png"],
+platearmor         = [0, 18,  "false", "armor", "platearmor", 80, 25, "/pica/heavy_armor_02.png"],
+
+helmet        = [0, 0,  "false",   "head",       "helmet", 2,  4],
+
+boots          = [0, 0,  "false",   "feet", "boots", 2,  5];
+
 //#######################################################################################################################################
 //                                                              Equipped
 //#######################################################################################################################################
 
 var dragitem, inventoryslots=[];
 var equipped_0, equipped_1, equipped_2, equipped_3, equipped_4, equipped_5;
-for (i =  0; i < 24; i++){inventoryslots[i]="inventory_"+i };
 
-var boot0  = [0, 0,  "false",   "feet", "Leather Boots", 2,  5];
+for (i =  0; i < 24; i++){inventoryslots[i]="inventory_"+i };
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -144,6 +178,7 @@ function allowDrop(ev) {
 function drag(ev, item) {
     ev.dataTransfer.setData("text", ev.target.id);
     dragitem = item;
+    console.log(dragitem[3],"yea");
 }
   
 function drop(ev) {
@@ -155,19 +190,22 @@ function drop(ev) {
 
 function getpalce(targetid){
 
+
     if   (document.getElementById(targetid).innerHTML == 0){
 
         for(i=0; i<23;i++){
             if (targetid == "inventory_"+i) return true
         }
+        console.log(targetid);
+        console.log(dragitem);
 
     switch (targetid){
         case "head":  if(dragitem[3]=="head")                       {equipped_0=dragitem; return true}else{return false;}
         case "off":   if(dragitem[3]=="off" || 
                          dragitem[3]=="either"||
                          dragitem[3]=="shield")                     {equipped_1=dragitem; return true}else{return false;}
-        case "main":  if(dragitem[3]=="main"  || 
-                         dragitem[3]=="either")                     {equipped_2=dragitem; return true}else{return false;}
+        case "main":  if(dragitem[3]=="either"  || 
+                         dragitem[3]=="main")                     {equipped_2=dragitem; return true}else{return false;}
         case "armor": if(dragitem[3]=="armor")                      {equipped_3=dragitem; return true}else{return false;}
         case "feet":  if(dragitem[3]=="feet")                       {equipped_4=dragitem; return true}else{return false;}
 
@@ -178,9 +216,19 @@ function getpalce(targetid){
 }
 
 
-function buy_item(){
-    document.getElementById(free_inv_slot()).innerHTML = '<img src="https://preview.redd.it/n8jwvz0gkxg61.jpg?width=640&crop=smart&auto=webp&s=66ab9edfcf61ba4d5142221cdacf8beed3aa72cc"              class="pic_inventory" draggable="true" id="leatherboots"ondragstart="drag(event, boot0)"></div>';
-    openSide('myInventory', '500px');
+//#######################################################################################################################################
+//                                                              Buy/Sell
+//#######################################################################################################################################
+
+
+function buy_item(item){
+
+//   dagger         = [4,  1, "dex", "either", "Dagger"  ,1 , 10, "/pica/ dagger_01.png"],
+    var itemtext = '<img src="'+item[7]+'" class="pic_inventory" draggable="true" id="'+item[4]+'"ondragstart="drag(event,'+item[4]+')"></div>';
+    console.log(itemtext);
+    document.getElementById(free_inv_slot()).innerHTML = itemtext;
+   
+   if (getcheckboxbyid('openinvonbuy')==false) openSide('myInventory', '500px');
 }
 
 function free_inv_slot(){
@@ -723,25 +771,23 @@ function settrain(a){
 }
 
 //#######################################################################################################################################
-//                                                          Patreon Content
+//                                                          Hide/unhide Content
 //#######################################################################################################################################
 var i_am_bool=false;
 
-function patreon(){
+function hide(bool){
 
-    switch(i_am_bool){
+    switch(bool, id){
     case true:
-    document.getElementById(1089).style.visibility = "hidden";
-    i_am_bool=false;
+    document.getElementById(id).style.visibility = "hidden";
+    bool=false;
     break;  
 
     case false: 
-    document.getElementById(1089).style.visibility = "visible";
-    i_am_bool=true;
+    document.getElementById(id).style.visibility = "visible";
+    bool=true;
     break;
-}
-    
- 
+    }
 
 }
 
@@ -773,10 +819,29 @@ function fight1(){
 
 
 //#######################################################################################################################################
-//                                                          Interpretation
+//                                                          Testting
 //#######################################################################################################################################
 
-//function readout_array(){}
+
+
+function testing(){
+    checkchildnodebyid('head')
+    checkchildnodebyid('main')
+    checkchildnodebyid('off')
+    checkchildnodebyid('armor')
+    checkchildnodebyid('feet')
+       
+}
+
+function checkchildnodebyid(id){
+
+    if (readbyid(id) != ""){
+        const childnode = document.getElementById(id);
+        if(childnode.firstChild.innerHTML!=0){console.log(childnode.firstChild.innerHTML);}
+    } else {console.log("Not Equipped")}
+    
+
+}
 
 
 
