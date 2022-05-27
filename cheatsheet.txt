@@ -1,0 +1,23 @@
+function opacitybyid(a,b){document.getElementById(a).style.opacity = b}
+
+setTimeout(function(){}, timeout);
+
+function setopacitybyid(id, opacity){
+    document.getElementById(id).style.opacity = opacity;
+}
+
+function uncheckbyid(id){
+    document.getElementById(id).checked = false;
+}
+
+function checkbyid(id){
+    document.getElementById(id).checked = true;
+}
+
+function getcheckboxbyid(id){
+    return document.getElementById(id).checked;
+}
+
+function readbyid(id){
+    return document.getElementById(id).innerHTML
+}

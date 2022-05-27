@@ -1,8 +1,14 @@
 //#######################################################################################################################################
-//                                                              Var Setup
+//                                                              Todoo in Africa
 //#######################################################################################################################################
-var PT = 0, GP=0, PP=0, HP=0, AC=0, MP =0;
-
+//When buying an item multiple times changing id (means need to make multiple arrays) 
+//add 8 weapon and 3 helmets, 3 boots, 6 bodypeaces (4erreihe)
+//Add Abilitychecks/Safes
+//add subtract stats when item worn
+//Function for Weapon Attack
+//Add Trainings Goblin, Wolf, Skeleton, Mage, Banidt, Orc, Ogre, Giant, Dragon
+//Add Twohanded support
+//Inventory Weight(works withweight)
 //#######################################################################################################################################
 //                                                          Tools && Setup
 //#######################################################################################################################################
@@ -38,9 +44,9 @@ function mathRandomInt(a, b) {
     return function(a, b) { return compare(a, b) * direction; };
   }
 
-  function opacitybyid(a,b){document.getElementById(a).style.opacity = b}
+function opacitybyid(a,b){document.getElementById(a).style.opacity = b}
 
-  setTimeout(function(){}, timeout);
+setTimeout(function(){}, timeout);
 
 function setopacitybyid(id, opacity){
     document.getElementById(id).style.opacity = opacity;
@@ -66,13 +72,15 @@ function readbyid(id){
 //                                                          Stat Bar
 //#######################################################################################################################################
 
-var PT, ACH, ACM, ACL, ACD, ARMORH = 0, ARMORM = 0, ARMORL = 0, Shield = 0, HPB = 0, PPB = 0, ACB = 0, MPB = 0, STR_modifier = 0, DEX_modifier = 0;
+var PT = 0, GP=0, PP=0, HP=0, AC=0, MP =0;
+
+var STAT_ARRAY=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+
+var train_mod=[], str_mod, dex_mod, con_mod, int_mod, psy_mod, cha_mod;
+
+var PT, ACH, ACM, ACL, ACD, ARMORH = 0, ARMORM = 0, ARMORL = 0, Shield = 0, HPB = 0, PPB = 0, ACB = 0, MPB = 0, INV_SPACE = 0; STR_modifier = 0, DEX_modifier = 0;
 
 setInterval(function updatev(){
-
-
-    //Set PT POINTS even
-    
 
     //choose higest AC
     ACH = 10 + ARMORH + Shield;
@@ -91,18 +99,24 @@ setInterval(function updatev(){
     //calc MP
     MP = 5+Math.ceil((STAT_ARRAY[3] / 2))+MPB;
 
+    //Set Inventory Space by str
+
+    //Set Skill
+    
+    str_mod = ((STAT_ARRAY[0]-10/2)+train_mod[0])
+    dex_mod = ((STAT_ARRAY[1]-10/2)+train_mod[1])
+    con_mod = ((STAT_ARRAY[2]-10/2)+train_mod[2])
+    int_mod = ((STAT_ARRAY[3]-10/2)+train_mod[3])
+    psy_mod = ((STAT_ARRAY[4]-10/2)+train_mod[4])
+    cha_mod = ((STAT_ARRAY[5]-10/2)+train_mod[5])  
+
+
     //set Body properties
     SET_BODY =[gender, size, weight, fitness, face, hair_color, eye_color];
 
-    //set atck
-   STR_modifier = ((STAT_ARRAY[0]-10)/2);
-   DEX_modifier = ((STAT_ARRAY[1]-10)/2);
-    
-    //setdmg 
-
-
+    //Set Stats
     for(i=0;i<12;i++){
-        if(i<6)
+        if(i<=5)
             {document.getElementById('stat_'+i).innerHTML = STAT_ARRAY[i];}
         else if(i==6)
             {document.getElementById('stat_'+i).innerHTML = AC;}
@@ -113,13 +127,44 @@ setInterval(function updatev(){
         else if(i==9)
             {document.getElementById('stat_'+i).innerHTML = GP;}
         else if(i==10)
-            {document.getElementById('stat_10').innerHTML = MP;}
+            {document.getElementById('stat_'+i).innerHTML = MP;}
         else if(i==11)
-            {document.getElementById('stat_11').innerHTML = PT;}
+            {document.getElementById('stat_'+i).innerHTML = PT;}
     }
 }, 50);
-
   
+//#######################################################################################################################################
+//                                                              Checks
+//#######################################################################################################################################
+
+//                  str,dex
+function player_check(mod){
+
+switch (mod){
+    case "str":return     str_mod+train_mod[6]  + mathRandomInt(1,20);
+    case "dex":return     dex_mod+train_mod[7]  + mathRandomInt(1,20); 
+    case "con":return     con_mod+train_mod[8]  + mathRandomInt(1,20);
+    case "int":return     int_mod+train_mod[9]  + mathRandomInt(1,20);
+    case "psy":return    psy_mod+train_mod[10]  + mathRandomInt(1,20);
+    case "cha":return    cha_mod+train_mod[11]  + mathRandomInt(1,20);
+}
+}
+
+function player_check(mod){
+
+switch (mod){
+    case "str": return str_mod+train_mod[12] + mathRandomInt(1,20);
+    case "dex": return dex_mod+train_mod[13] + mathRandomInt(1,20); 
+    case "con": return con_mod+train_mod[14] + mathRandomInt(1,20);
+    case "int": return int_mod+train_mod[15] + mathRandomInt(1,20);
+    case "psy": return psy_mod+train_mod[16] + mathRandomInt(1,20);
+    case "cha": return cha_mod+train_mod[17] + mathRandomInt(1,20);
+}
+}
+
+function test(){
+document.getElementById("devfeedback").innerHTML = player_check("str");
+}
 //#######################################################################################################################################
 //                                                              Sidebar
 //#######################################################################################################################################
@@ -129,13 +174,6 @@ function openSide(id,width){
 function closeSide(id){
     document.getElementById(id).style.width = "0";
 }
-
-
-
-
-
-
-
 
 //#######################################################################################################################################
 //                                                              Items
@@ -161,6 +199,8 @@ helmet        = [0, 0,  "false",   "head",       "helmet", 2,  4],
 
 boots          = [0, 0,  "false",   "feet", "boots", 2,  5];
 
+
+ 
 //#######################################################################################################################################
 //                                                              Equipped
 //#######################################################################################################################################
@@ -220,8 +260,13 @@ function getpalce(targetid){
 //                                                              Buy/Sell
 //#######################################################################################################################################
 
-
 function buy_item(item){
+
+//Look if enough money
+console.log(item [6])
+if(item [6]>GP){console.log("Not enough Money dear Friedn"); return}  
+GP -= item[6]
+
 
 //   dagger         = [4,  1, "dex", "either", "Dagger"  ,1 , 10, "/pica/ dagger_01.png"],
     var itemtext = '<img src="'+item[7]+'" class="pic_inventory" draggable="true" id="'+item[4]+'"ondragstart="drag(event,'+item[4]+')"></div>';
@@ -338,6 +383,7 @@ function lootbox(b){
     active=b;
 }
 
+
 //#######################################################################################################################################
 //                                                   Either Choose PB or Roll
 //#######################################################################################################################################
@@ -417,7 +463,7 @@ function choose_pb_roll(i){
 //                                                          Roll Stat
 //#######################################################################################################################################
 
-var STR = 0, DEX = 0, CON = 0, INT = 0, PSY = 0, CHA = 0, STAT_ROLL, STAT_ROLL_ARRAY=[], STAT_ARRAY=[STR, DEX, CON, INT, PSY, CHA], OLD_STAT_ARRAY=[0, 0, 0, 0, 0, 0];
+var STAT_ROLL, STAT_ROLL_ARRAY=[], OLD_STAT_ARRAY=[0, 0, 0, 0, 0, 0];
 
 var roll_nr = "1";
 
