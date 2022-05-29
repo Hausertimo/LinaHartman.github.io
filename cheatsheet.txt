@@ -21,3 +21,39 @@ function getcheckboxbyid(id){
 function readbyid(id){
     return document.getElementById(id).innerHTML
 }
+
+
+
+
+    check
+     "str": str_[6] 
+     "dex": dex_[7]  
+     "con": con_[8] 
+     "int": int_[9] 
+     "psy": psy_[10]
+     "cha": cha_[11]
+
+    safe
+     "str":  str_[12]  
+     "dex":  dex_[13]   
+     "con":  con_[14]  
+     "int":  int_[15]  
+     "psy":  psy_[16]  
+     "cha":  cha_[17]  
+
+
+     "athletic":         str_[30]  
+     "stealth":          dex_[31]  
+     "sleightofhand":    dex_[32]  
+     "acrobatics":       dex_[33]  
+     "drinking":         con_[34]  
+     "history":          int_[35]  
+     "arcane":           int_[36]  
+     "religion":         psy_[37]  
+     "insight":          psy_[39]  
+     "nature":           psy_[40]  
+     "perception":       psy_[41]  
+     "seduce":           cha_[42]  
+     "threaten":         cha_[43]  
+     "performance":      cha_[44]  
+     "deception":        cha_[45]  

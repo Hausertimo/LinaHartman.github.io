@@ -183,6 +183,19 @@ text-size-adjust: inherit;
   
 }
 
+.sidebar .backbtn {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-size: 30px;
+  margin-left: 50px;
+}
+
+.sidebar .backbtn:hover {
+  color: #f1f1f1;
+  cursor: pointer;
+}
+
 .sidebar .closebtn {
   position: absolute;
   top: 0;

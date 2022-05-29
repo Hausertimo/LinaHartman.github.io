@@ -371,6 +371,7 @@
   
   <!-- Character-->
   <div id="myCharacter" class="sidebar">
+    <div href="javascript:void(0)" class="backbtn" onclick="closeSide('myCharacter'), openSide('mySidebar', '400px')">⤙</div>
     <div href="javascript:void(0)" class="closebtn" onclick="closeSide('myCharacter')">×</div>
     <div class="sidebardiv">Char Name</div>
     <div class="sidebardiv">Stats</div>
@@ -378,6 +379,7 @@
 
   <!-- Settings-->
   <div id="mySettings" class="sidebar">
+    <div href="javascript:void(0)" class="backbtn" onclick="closeSide('mySettings'), openSide('mySidebar', '400px')">⤙</div>
     <div href="javascript:void(0)" class="closebtn" onclick="closeSide('mySettings')">×</div>
     <div class="sidebardiv"><input type="checkbox" >Brutal Content</div>
     <div class="sidebardiv"><input type="checkbox" id="openinvonbuy">Open Inv. when Buying</div>
@@ -385,11 +387,12 @@
 
    <!-- Development-->
    <div id="myDevelopment" class="sidebar">
+    <div href="javascript:void(0)" class="backbtn" onclick="closeSide('myDevelopment'), openSide('mySidebar', '400px')">⤙</div>
     <div href="javascript:void(0)" class="closebtn" onclick="closeSide('myDevelopment')">×</div>
-    <div class="sidebardiv">Test This Content </div>
-    <div class="sidebardiv">What about this content</div>
-    <div class="sidebardiv">Test This Content </div>
-    <div class="sidebardiv" onclick="test()">What about this content</div>
+    <div class="sidebardiv" onclick="test1()">str </div>
+    <div class="sidebardiv" onclick="test2()">dex</div>
+    <div class="sidebardiv" onclick="test3()">cont </div>
+    <div class="sidebardiv" onclick="test4()">int</div>
     <div class="sidebardiv"><br></div>
     <div class="sidebardiv" id="devfeedback"></div>
   </div>
@@ -407,6 +410,7 @@
       <div id="armor"     class="itembox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
       <div id="feet"      class="itembox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     </div>
+    <div class="backbtn" onclick="closeSide('myInventory'), openSide('mySidebar', '400px')">⤙</div>
     <div class="closebtn"  onclick="closeSide('myInventory')">×</div>
     <div class="inventory">
       <div class="itembox2" id="inventory_0" ondrop="drop(event)" ondragover="allowDrop(event)"></div>

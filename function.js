@@ -1,14 +1,148 @@
 //#######################################################################################################################################
 //                                                              Todoo in Africa
 //#######################################################################################################################################
-//When buying an item multiple times changing id (means need to make multiple arrays) 
-//add 8 weapon and 3 helmets, 3 boots, 6 bodypeaces (4erreihe)
-//Add Abilitychecks/Safes
+//when buying proficency add proficency 
+
 //add subtract stats when item worn
+
 //Function for Weapon Attack
+
 //Add Trainings Goblin, Wolf, Skeleton, Mage, Banidt, Orc, Ogre, Giant, Dragon
 //Add Twohanded support
 //Inventory Weight(works withweight)
+
+//add 8 weapon and 3 helmets, 3 boots, 6 bodypeaces (4erreihe)
+
+//#######################################################################################################################################
+//                                                          Testting
+//#######################################################################################################################################
+
+var equipped_0 = false, equipped_1 = false, equipped_2 = false, equipped_3 = false, equipped_4 = false;
+
+
+    //Calculate AC
+    switch (equipped_3){
+        case false:         AC = Math.floor(10 + ((STAT_ARRAY[1]-10)/2)); break;
+        case armorlight:    AC = 12+Math.floor(dex_mod); break;
+        case armormedium:
+        case platearmor:
+    }
+
+    if (equipped_2[4] == "shield"){AC+=equipped_2[1]}
+
+    if (equipped_3 = false){ AC = 10 + ((STAT_ARRAY[1]-10)/2);}
+    ACH = 10 + ARMORH + Shield;
+    ACM = 10 + ARMORM + Shield;
+    ACL = 10 + ARMORL + Shield + ((STAT_ARRAY[1]-10)/2);
+    ACD = 10 + ((STAT_ARRAY[1]-10)/2);
+  
+    AC = Math.ceil(Math.max(ACH, ACM, ACL, ACD));
+
+function testing(){
+    //helmet
+    switch (getchildidbyid('head')){
+        case    false: equipped_0 = false;break;
+        case "helmet": equipped_0 = helmet;break;
+    }
+     
+
+    //Main Hand
+    switch (getchildidbyid('main')){
+        case false:         equipped_1 = false;         break;
+        case "dagger":      equipped_1 = dagger;        break;
+        case "shortsword":  equipped_1 = shortsword;    break;
+        case "lightaxe":    equipped_1 = lightaxe;      break;
+        case "lighthammer": equipped_1 = lighthammer;   break;
+        case "rapier":      equipped_1 = rapier;        break;
+        case "longsword":   equipped_1 = longsword;     break;
+    }
+
+    //Off Hand
+    switch (getchildidbyid('off')){
+        case false:         equipped_2 = false;         break;
+        case "dagger":      equipped_2 = dagger;        break;
+        case "shortsword":  equipped_2 = shortsword;    break;
+        case "lightaxe":    equipped_2 = lightaxe;      break;
+        case "lighthammer": equipped_2 = lighthammer;   break;
+        case "rapier":      equipped_2 = rapier;        break;
+        case "longsword":   equipped_2 = longsword;     break;
+        case "shield":      equipped_2 = shield;        break;    
+        }
+
+
+    //Armor
+    switch (getchildidbyid('armor')){
+        case false: equipped_3 = false
+        case "armorlight":  equipped_3 = armorlight;    break;
+        case "armormedium": equipped_3 = armormedium;   break;
+        case "platearmor":  equipped_3 = platearmor;    break;
+        }
+
+
+    //Boots
+    switch (getchildidbyid('feet')){
+        case false: equipped_4 = false
+        case "boots": equipped_4 = boots
+        }
+}
+
+
+
+
+
+//Get the Itemnames inside of eqquipped inventroy from innnerhtml string 
+function getchildidbyid(id){
+    if (readbyid(id) != ""){return(returnname(readbyid(id)))}else{return false}
+}
+
+function returnname(text){
+    let pstart = text.search("vent,")+5;
+    let pstop = text.search('">')-1;
+    result = text.substr(pstart, (pstop - pstart))
+    return result;
+}
+
+
+
+function test1(){
+     testing()
+   
+}
+    
+function test2(){
+        document.getElementById("devfeedback").innerHTML = "Dex Check = "+player_check("dex")
+        
+}
+    
+function test3(){
+        document.getElementById("devfeedback").innerHTML = "Con Check = " + player_check("con")
+    
+}
+    
+function test4(){
+       document.getElementById("devfeedback").innerHTML = "Int Check = " + player_check("int")
+        console.log(int_mod)
+}
+
+
+var i_am_bool=false;
+
+
+function hide(bool){
+
+    switch(bool, id){
+    case true:
+    document.getElementById(id).style.visibility = "hidden";
+    bool=false;
+    break;  
+
+    case false: 
+    document.getElementById(id).style.visibility = "visible";
+    bool=true;
+    break;
+    }
+}
+
 //#######################################################################################################################################
 //                                                          Tools && Setup
 //#######################################################################################################################################
@@ -72,23 +206,21 @@ function readbyid(id){
 //                                                          Stat Bar
 //#######################################################################################################################################
 
-var PT = 0, GP=0, PP=0, HP=0, AC=0, MP =0;
+var PT = 0, GP=200, PP=0, HP=0, AC=0, MP =0;
 
-var STAT_ARRAY=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
-
-var train_mod=[], str_mod, dex_mod, con_mod, int_mod, psy_mod, cha_mod;
+var STAT_ARRAY=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0], str_mod, dex_mod, con_mod, int_mod, psy_mod, cha_mod;
 
 var PT, ACH, ACM, ACL, ACD, ARMORH = 0, ARMORM = 0, ARMORL = 0, Shield = 0, HPB = 0, PPB = 0, ACB = 0, MPB = 0, INV_SPACE = 0; STR_modifier = 0, DEX_modifier = 0;
 
 setInterval(function updatev(){
 
-    //choose higest AC
-    ACH = 10 + ARMORH + Shield;
-    ACM = 10 + ARMORM + Shield;
-    ACL = 10 + ARMORL + Shield + ((STAT_ARRAY[1]-10)/2);
-    ACD = 10 + ((STAT_ARRAY[1]-10)/2);
-  
-    AC = Math.ceil(Math.max(ACH, ACM, ACL, ACD))+ACB;
+        //choose higest AC
+        ACH = 10 + ARMORH + Shield;
+        ACM = 10 + ARMORM + Shield;
+        ACL = 10 + ARMORL + Shield + ((STAT_ARRAY[1]-10)/2);
+        ACD = 10 + ((STAT_ARRAY[1]-10)/2);
+      
+        AC = Math.ceil(Math.max(ACH, ACM, ACL, ACD));
     
     //calc HP
     HP = 5+Math.ceil((STAT_ARRAY[2] / 2))+HPB;
@@ -103,12 +235,12 @@ setInterval(function updatev(){
 
     //Set Skill
     
-    str_mod = ((STAT_ARRAY[0]-10/2)+train_mod[0])
-    dex_mod = ((STAT_ARRAY[1]-10/2)+train_mod[1])
-    con_mod = ((STAT_ARRAY[2]-10/2)+train_mod[2])
-    int_mod = ((STAT_ARRAY[3]-10/2)+train_mod[3])
-    psy_mod = ((STAT_ARRAY[4]-10/2)+train_mod[4])
-    cha_mod = ((STAT_ARRAY[5]-10/2)+train_mod[5])  
+    str_mod = Math.floor(((STAT_ARRAY[0]-10)/2+train_mod[0]))
+    dex_mod = Math.floor(((STAT_ARRAY[1]-10)/2+train_mod[1]))
+    con_mod = Math.floor(((STAT_ARRAY[2]-10)/2+train_mod[2]))
+    int_mod = Math.floor(((STAT_ARRAY[3]-10)/2+train_mod[3]))
+    psy_mod = Math.floor(((STAT_ARRAY[4]-10)/2+train_mod[4]))
+    cha_mod = Math.floor(((STAT_ARRAY[5]-10)/2+train_mod[5])) 
 
 
     //set Body properties
@@ -137,16 +269,19 @@ setInterval(function updatev(){
 //                                                              Checks
 //#######################################################################################################################################
 
-//                  str,dex
+var train_mod=[]; for(var i = 0; i<80; i++){train_mod[i]=0;}
+
+
+//                  str,dex5
 function player_check(mod){
 
 switch (mod){
-    case "str":return     str_mod+train_mod[6]  + mathRandomInt(1,20);
-    case "dex":return     dex_mod+train_mod[7]  + mathRandomInt(1,20); 
-    case "con":return     con_mod+train_mod[8]  + mathRandomInt(1,20);
-    case "int":return     int_mod+train_mod[9]  + mathRandomInt(1,20);
-    case "psy":return    psy_mod+train_mod[10]  + mathRandomInt(1,20);
-    case "cha":return    cha_mod+train_mod[11]  + mathRandomInt(1,20);
+    case "str":return str_mod+train_mod[6]   + mathRandomInt(1,20);
+    case "dex":return dex_mod+train_mod[7]   + mathRandomInt(1,20); 
+    case "con":return con_mod+train_mod[8]   + mathRandomInt(1,20);
+    case "int":return int_mod+train_mod[9]   + mathRandomInt(1,20);
+    case "psy":return psy_mod+train_mod[10]  + mathRandomInt(1,20);
+    case "cha":return cha_mod+train_mod[11]  + mathRandomInt(1,20);
 }
 }
 
@@ -159,12 +294,26 @@ switch (mod){
     case "int": return int_mod+train_mod[15] + mathRandomInt(1,20);
     case "psy": return psy_mod+train_mod[16] + mathRandomInt(1,20);
     case "cha": return cha_mod+train_mod[17] + mathRandomInt(1,20);
+
+
+    case "athletic":        return str_mod+train_mod[30] + mathRandomInt(1,20);
+    case "stealth":         return dex_mod+train_mod[31] + mathRandomInt(1,20);
+    case "sleightofhand":   return dex_mod+train_mod[32] + mathRandomInt(1,20);
+    case "acrobatics":      return dex_mod+train_mod[33] + mathRandomInt(1,20);
+    case "drinking":        return con_mod+train_mod[34] + mathRandomInt(1,20);
+    case "history":         return int_mod+train_mod[35] + mathRandomInt(1,20);
+    case "arcane":          return int_mod+train_mod[36] + mathRandomInt(1,20);
+    case "religion":        return psy_mod+train_mod[37] + mathRandomInt(1,20);
+    case "insight":         return psy_mod+train_mod[39] + mathRandomInt(1,20);
+    case "nature":          return psy_mod+train_mod[40] + mathRandomInt(1,20);
+    case "perception":      return psy_mod+train_mod[41] + mathRandomInt(1,20);
+    case "seduce":          return cha_mod+train_mod[42] + mathRandomInt(1,20);
+    case "threaten":        return cha_mod+train_mod[43] + mathRandomInt(1,20);
+    case "performance":     return cha_mod+train_mod[44] + mathRandomInt(1,20);
+    case "deception":       return cha_mod+train_mod[45] + mathRandomInt(1,20);
 }
 }
 
-function test(){
-document.getElementById("devfeedback").innerHTML = player_check("str");
-}
 //#######################################################################################################################################
 //                                                              Sidebar
 //#######################################################################################################################################
@@ -179,8 +328,6 @@ function closeSide(id){
 //                                                              Items
 //#######################################################################################################################################
 
-
-
 var            //dmg dice mod    hand      name/id     weight price
 dagger         = [4,  1, "dex", "either", "dagger"      ,1 , 10, "/pica/dagger_01.png"],
 shortsword     = [6,  1, "str", "either", "shortsword" ,12, 10, "/pica/sword_01.png"],
@@ -192,10 +339,10 @@ shield         = [0,  2, "false", "shield","shield"    ,8 , 10, "/pica/shield_06
 
 
 armorlight         = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_03.png"],
-armormedium        = [0, 14,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_01.png"],
+armormedium        = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_01.png"],
 platearmor         = [0, 18,  "false", "armor", "platearmor", 80, 25, "/pica/heavy_armor_02.png"],
 
-helmet        = [0, 0,  "false",   "head",       "helmet", 2,  4],
+helmet        = [0, 0,  "false",   "head", "helmet", 2,  4],
 
 boots          = [0, 0,  "false",   "feet", "boots", 2,  5];
 
@@ -206,7 +353,6 @@ boots          = [0, 0,  "false",   "feet", "boots", 2,  5];
 //#######################################################################################################################################
 
 var dragitem, inventoryslots=[];
-var equipped_0, equipped_1, equipped_2, equipped_3, equipped_4, equipped_5;
 
 for (i =  0; i < 24; i++){inventoryslots[i]="inventory_"+i };
 
@@ -218,12 +364,14 @@ function allowDrop(ev) {
 function drag(ev, item) {
     ev.dataTransfer.setData("text", ev.target.id);
     dragitem = item;
-    console.log(dragitem[3],"yea");
+    console.log(dragitem[3]);
+
 }
   
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
+    console.log(ev.target.className);
    if (getpalce(ev.target.id)){ev.target.appendChild(document.getElementById(data));}
 
 }
@@ -236,18 +384,19 @@ function getpalce(targetid){
         for(i=0; i<23;i++){
             if (targetid == "inventory_"+i) return true
         }
-        console.log(targetid);
-        console.log(dragitem);
+        //console.log(targetid);
+        //console.log(dragitem);
+
 
     switch (targetid){
-        case "head":  if(dragitem[3]=="head")                       {equipped_0=dragitem; return true}else{return false;}
+        case "head":  if(dragitem[3]=="head")                       {return true}else{return false;}
         case "off":   if(dragitem[3]=="off" || 
                          dragitem[3]=="either"||
-                         dragitem[3]=="shield")                     {equipped_1=dragitem; return true}else{return false;}
+                         dragitem[3]=="shield")                     {return true}else{return false;}
         case "main":  if(dragitem[3]=="either"  || 
-                         dragitem[3]=="main")                     {equipped_2=dragitem; return true}else{return false;}
-        case "armor": if(dragitem[3]=="armor")                      {equipped_3=dragitem; return true}else{return false;}
-        case "feet":  if(dragitem[3]=="feet")                       {equipped_4=dragitem; return true}else{return false;}
+                         dragitem[3]=="main")                     {return true}else{return false;}
+        case "armor": if(dragitem[3]=="armor")                      {return true}else{return false;}
+        case "feet":  if(dragitem[3]=="feet")                       {return true}else{return false;}
 
     }    
 
@@ -259,6 +408,7 @@ function getpalce(targetid){
 //#######################################################################################################################################
 //                                                              Buy/Sell
 //#######################################################################################################################################
+var itemcount = 0;
 
 function buy_item(item){
 
@@ -269,8 +419,9 @@ GP -= item[6]
 
 
 //   dagger         = [4,  1, "dex", "either", "Dagger"  ,1 , 10, "/pica/ dagger_01.png"],
-    var itemtext = '<img src="'+item[7]+'" class="pic_inventory" draggable="true" id="'+item[4]+'"ondragstart="drag(event,'+item[4]+')"></div>';
-    console.log(itemtext);
+    var itemtext = '<img src="'+item[7]+'" class="pic_inventory" draggable="true" id="'+item[4]+itemcount+'"ondragstart="drag(event,'+item[4]+')"></div>';
+    console.log(itemtext),itemcount++;
+
     document.getElementById(free_inv_slot()).innerHTML = itemtext;
    
    if (getcheckboxbyid('openinvonbuy')==false) openSide('myInventory', '500px');
@@ -388,7 +539,7 @@ function lootbox(b){
 //                                                   Either Choose PB or Roll
 //#######################################################################################################################################
 
-var choose_0010 = 0; lock_02 = false;
+var choose_0010 = 0, lock_02 = false;
 
 function choose_pb_roll(i){
 
@@ -548,6 +699,8 @@ if (choose_0010==1){
     document.getElementById("pb_stat").innerHTML = "Points Pool:"+points_pb;
     }
 }
+
+
 
 //#######################################################################################################################################
 //                                                          Race
@@ -781,12 +934,6 @@ function setmind(c){
 var  tshield = false; tlarmor = false, tmarmor = false, tharmor = false, tlweapon = false, tmweapon = false;
 var SET_TRAIN=[tshield, tlarmor, tmarmor, tharmor, tlweapon, tmweapon];
 
-//var SET_TRAIN = [], lock_04 =0;
-//for (var i = 0; i <= 60; ++i) {
-//       SET_TRAIN[i] = "tra_"+i;
-//       SET_TRAIN[i]=false;
-//   }
-
 
 function settrain(a){
 
@@ -799,41 +946,21 @@ function settrain(a){
         case 3: if(getcheckboxbyid("tr_2")==false){uncheckbyid("tr_3")}else{price = 50; } break;
         case 4: if(getcheckboxbyid("tr_5")==true){checkbyid("tr_4")}else{price = 50; } break;             
         case 5: if(getcheckboxbyid("tr_4")==false){uncheckbyid("tr_5")}else{price = 50; } break;         
-        case 6: price = 50; break;
-        case 7: price = 50; break;
-        case 8: price = 50; break;
-        case 9: price = 50; break;
+        case 6: price = 50;  break;
+        case 7: price = 50;  break;
+        case 8: price = 50;  break;
+        case 9: price = 50;  break;
         case 10: price = 50; break;
-        case 11: price = 50;break;
+        case 11: price = 50; break;
         default: break;
     }
 
-    for(i=0;i<6;i++){
-     SET_TRAIN[i] = getcheckboxbyid("tr_"+i)
-    }
+    for(i=0;i<12;i++){
+       train_mod[(i+50)] = getcheckboxbyid("tr_"+i)
+        console.log("Number "+(i+50)+" "+train_mod[50+i])
+   }
 
     if (getcheckboxbyid("tr_"+a)){setopacitybyid(("tra_"+a),0.5); PT-=price;} else if (getcheckboxbyid("tr_"+a) == false){setopacitybyid(("tra_"+a),1); PT+=price;}
-
-}
-
-//#######################################################################################################################################
-//                                                          Hide/unhide Content
-//#######################################################################################################################################
-var i_am_bool=false;
-
-function hide(bool){
-
-    switch(bool, id){
-    case true:
-    document.getElementById(id).style.visibility = "hidden";
-    bool=false;
-    break;  
-
-    case false: 
-    document.getElementById(id).style.visibility = "visible";
-    bool=true;
-    break;
-    }
 
 }
 
@@ -863,36 +990,3 @@ function fight1(){
     ccount++;
 }
 
-
-//#######################################################################################################################################
-//                                                          Testting
-//#######################################################################################################################################
-
-
-
-function testing(){
-    checkchildnodebyid('head')
-    checkchildnodebyid('main')
-    checkchildnodebyid('off')
-    checkchildnodebyid('armor')
-    checkchildnodebyid('feet')
-       
-}
-
-function checkchildnodebyid(id){
-
-    if (readbyid(id) != ""){
-        const childnode = document.getElementById(id);
-        if(childnode.firstChild.innerHTML!=0){console.log(childnode.firstChild.innerHTML);}
-    } else {console.log("Not Equipped")}
-    
-
-}
-
-
-
-
-
-//#######################################################################################################################################
-//                                                          Enemy
-//#######################################################################################################################################
