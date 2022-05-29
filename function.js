@@ -17,100 +17,14 @@
 //                                                          Testting
 //#######################################################################################################################################
 
-var equipped_0 = false, equipped_1 = false, equipped_2 = false, equipped_3 = false, equipped_4 = false;
-
-
-    //Calculate AC
-    switch (equipped_3){
-        case false:         AC = Math.floor(10 + ((STAT_ARRAY[1]-10)/2)); break;
-        case armorlight:    AC = 12+Math.floor(dex_mod); break;
-        case armormedium:
-        case platearmor:
-    }
-
-    if (equipped_2[4] == "shield"){AC+=equipped_2[1]}
-
-    if (equipped_3 = false){ AC = 10 + ((STAT_ARRAY[1]-10)/2);}
-    ACH = 10 + ARMORH + Shield;
-    ACM = 10 + ARMORM + Shield;
-    ACL = 10 + ARMORL + Shield + ((STAT_ARRAY[1]-10)/2);
-    ACD = 10 + ((STAT_ARRAY[1]-10)/2);
-  
-    AC = Math.ceil(Math.max(ACH, ACM, ACL, ACD));
-
-function testing(){
-    //helmet
-    switch (getchildidbyid('head')){
-        case    false: equipped_0 = false;break;
-        case "helmet": equipped_0 = helmet;break;
-    }
-     
-
-    //Main Hand
-    switch (getchildidbyid('main')){
-        case false:         equipped_1 = false;         break;
-        case "dagger":      equipped_1 = dagger;        break;
-        case "shortsword":  equipped_1 = shortsword;    break;
-        case "lightaxe":    equipped_1 = lightaxe;      break;
-        case "lighthammer": equipped_1 = lighthammer;   break;
-        case "rapier":      equipped_1 = rapier;        break;
-        case "longsword":   equipped_1 = longsword;     break;
-    }
-
-    //Off Hand
-    switch (getchildidbyid('off')){
-        case false:         equipped_2 = false;         break;
-        case "dagger":      equipped_2 = dagger;        break;
-        case "shortsword":  equipped_2 = shortsword;    break;
-        case "lightaxe":    equipped_2 = lightaxe;      break;
-        case "lighthammer": equipped_2 = lighthammer;   break;
-        case "rapier":      equipped_2 = rapier;        break;
-        case "longsword":   equipped_2 = longsword;     break;
-        case "shield":      equipped_2 = shield;        break;    
-        }
-
-
-    //Armor
-    switch (getchildidbyid('armor')){
-        case false: equipped_3 = false
-        case "armorlight":  equipped_3 = armorlight;    break;
-        case "armormedium": equipped_3 = armormedium;   break;
-        case "platearmor":  equipped_3 = platearmor;    break;
-        }
-
-
-    //Boots
-    switch (getchildidbyid('feet')){
-        case false: equipped_4 = false
-        case "boots": equipped_4 = boots
-        }
-}
-
-
-
-
-
-//Get the Itemnames inside of eqquipped inventroy from innnerhtml string 
-function getchildidbyid(id){
-    if (readbyid(id) != ""){return(returnname(readbyid(id)))}else{return false}
-}
-
-function returnname(text){
-    let pstart = text.search("vent,")+5;
-    let pstop = text.search('">')-1;
-    result = text.substr(pstart, (pstop - pstart))
-    return result;
-}
-
-
 
 function test1(){
-     testing()
-   
+    document.getElementById("devfeedback").innerHTML = "Hit = "+main_hit()
+        
 }
     
 function test2(){
-        document.getElementById("devfeedback").innerHTML = "Dex Check = "+player_check("dex")
+    document.getElementById("devfeedback").innerHTML = "DMG = "+main_atk()
         
 }
     
@@ -123,10 +37,6 @@ function test4(){
        document.getElementById("devfeedback").innerHTML = "Int Check = " + player_check("int")
         console.log(int_mod)
 }
-
-
-var i_am_bool=false;
-
 
 function hide(bool){
 
@@ -202,6 +112,23 @@ function readbyid(id){
     return document.getElementById(id).innerHTML
 }
 
+function cap(number, cap){
+if (number>=cap) {return cap;}else{return number}
+}
+
+//Get the Itemnames inside of eqquipped inventroy from innnerhtml string 
+function getchildidbyid(id){
+    if (readbyid(id) != ""){return(returnname(readbyid(id)))}else{return false}
+}
+
+function returnname(text){
+    let pstart = text.search("vent,")+5;
+    let pstop = text.search('">')-1;
+    result = text.substr(pstart, (pstop - pstart))
+    return result;
+}
+
+
 //#######################################################################################################################################
 //                                                          Stat Bar
 //#######################################################################################################################################
@@ -210,17 +137,15 @@ var PT = 0, GP=200, PP=0, HP=0, AC=0, MP =0;
 
 var STAT_ARRAY=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0], str_mod, dex_mod, con_mod, int_mod, psy_mod, cha_mod;
 
+var equipped_0 = false, equipped_1 = false, equipped_2 = false, equipped_3 = false, equipped_4 = false;
+
 var PT, ACH, ACM, ACL, ACD, ARMORH = 0, ARMORM = 0, ARMORL = 0, Shield = 0, HPB = 0, PPB = 0, ACB = 0, MPB = 0, INV_SPACE = 0; STR_modifier = 0, DEX_modifier = 0;
 
 setInterval(function updatev(){
 
-        //choose higest AC
-        ACH = 10 + ARMORH + Shield;
-        ACM = 10 + ARMORM + Shield;
-        ACL = 10 + ARMORL + Shield + ((STAT_ARRAY[1]-10)/2);
-        ACD = 10 + ((STAT_ARRAY[1]-10)/2);
-      
-        AC = Math.ceil(Math.max(ACH, ACM, ACL, ACD));
+    get_item_equipped();    
+    calc_ac();
+
     
     //calc HP
     HP = 5+Math.ceil((STAT_ARRAY[2] / 2))+HPB;
@@ -264,13 +189,22 @@ setInterval(function updatev(){
             {document.getElementById('stat_'+i).innerHTML = PT;}
     }
 }, 50);
-  
+
+//#######################################################################################################################################
+//                                                              Sidebar
+//#######################################################################################################################################
+function openSide(id,width){
+    document.getElementById(id).style.width = width;
+}
+function closeSide(id){
+    document.getElementById(id).style.width = "0";
+}
+
 //#######################################################################################################################################
 //                                                              Checks
 //#######################################################################################################################################
 
 var train_mod=[]; for(var i = 0; i<80; i++){train_mod[i]=0;}
-
 
 //                  str,dex5
 function player_check(mod){
@@ -315,27 +249,17 @@ switch (mod){
 }
 
 //#######################################################################################################################################
-//                                                              Sidebar
-//#######################################################################################################################################
-function openSide(id,width){
-    document.getElementById(id).style.width = width;
-}
-function closeSide(id){
-    document.getElementById(id).style.width = "0";
-}
-
-//#######################################################################################################################################
 //                                                              Items
 //#######################################################################################################################################
 
 var            //dmg dice mod    hand      name/id     weight price
-dagger         = [4,  1, "dex", "either", "dagger"      ,1 , 10, "/pica/dagger_01.png"],
-shortsword     = [6,  1, "str", "either", "shortsword" ,12, 10, "/pica/sword_01.png"],
-lightaxe       = [6,  1, "str", "either", "lightaxe"   ,12, 10, "/pica/axe_01.png"],
-lighthammer    = [6,  1, "str", "either", "lighthammer"   ,17, 8, "/pica/hammer_01.png"],
+dagger         = [4,  1, "dex", "either", "dagger"      ,1 , 10, "/pica/dagger_01.png", "light"],
+shortsword     = [6,  1, "str", "either", "shortsword" ,12, 10, "/pica/sword_01.png", "light"],
+lightaxe       = [6,  1, "str", "either", "lightaxe"   ,12, 10, "/pica/axe_01.png", "light"],
+lighthammer    = [6,  1, "str", "either", "lighthammer"   ,17, 8, "/pica/hammer_01.png", "light"],
 rapier         = [6,  1, "dex", "either", "rapier"      ,12, 10],
 longsword      = [8,  1, "str",   "main", "longsword"   ,24, 10],
-shield         = [0,  2, "false", "shield","shield"    ,8 , 10, "/pica/shield_06.png"],
+shield         = [0,  2, "false", "shield","shield"    ,8 , 10, "/pica/shield_06.png", "shield"],
 
 
 armorlight         = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_03.png"],
@@ -347,6 +271,139 @@ helmet        = [0, 0,  "false",   "head", "helmet", 2,  4],
 boots          = [0, 0,  "false",   "feet", "boots", 2,  5];
 
 
+//#######################################################################################################################################
+//                                                              Calc AC 
+//#######################################################################################################################################
+
+function calc_ac(){
+    //Calculate AC
+    switch (equipped_3[4]){
+        case false:           AC = 10 +dex_mod;                    break;
+        case "armorlight":    AC = equipped_3[1] + dex_mod;                   if(train_mod[51]!= true){AC=10+dex_mod}; break;
+        case "armormedium":   AC = equipped_3[1] + cap(dex_mod,2);            if(train_mod[52]!= true){AC=10}; break;        
+        case "platearmor":    AC = equipped_3[1];                             if(train_mod[53]!= true){AC=10}; break;
+        default:              AC = 10 +dex_mod;                   break;
+    }
+
+    //helmet AC
+    switch (equipped_0[4]){
+        case "helmet": AC+=equipped_0[1]; break;
+        default: break;
+    }
+    //boot AC
+    
+    switch (equipped_4[4]){
+        case "boots": AC+=equipped_4[1];break;
+        default: break;
+
+    }
+
+    //shield AC
+    switch (equipped_2[4]){
+        case "shield":if(train_mod[50]){AC+=equipped_2[1]}else{AC+=Math.floor(equipped_2[1]/2)}; break; 
+        default: break;
+    }
+}
+
+//#######################################################################################################################################
+//                                                              Calc Attack
+//#######################################################################################################################################
+
+function main_hit(){
+console.log(mathRandomInt(1,20), weapon_mod(equipped_1[2]), weapon_train(equipped_1[8]));  return (mathRandomInt(1,20)+weapon_mod(equipped_1[2])+weapon_train(equipped_1[8]))
+}
+
+function main_atk(){
+var dmg = 0
+if (equipped_1 == false){return (1+str_mod)}else{ for(i =0; i < equipped_1[1]; i++){dmg += mathRandomInt(1, equipped_1[0]); dmg += weapon_mod(equipped_1[2]);return dmg}
+}}
+
+
+function off_hit(){
+if (equipped_2 == false){return (mathRandomInt(1,20)+str_mod)}else{return (mathRandomInt(1,20)+weapon_mod(equipped_2[2]))}
+}
+
+function off_atk(){
+var dmg = 0
+if (equipped_2 == false){return (1+str_mod)}else{ for(var i =0; i < equipped_2[2]; i++){dmg += mathRandomInt(1, equipped_2[0])}+weapon_mod(equipped_0[2]);return dmg}
+}
+
+function weapon_train(train){
+    switch(train){
+        case shield: return 0;
+        case "light": if(train_mod[54]){return 2}else{return 0};
+        case "heavy": if(train_mod[55]){return 2}else{return 0};
+        default: return 0;
+    }
+}
+
+function weapon_mod(mod){
+switch(mod){
+    case    "str":return str_mod;
+    case    "dex":return dex_mod;
+    case "either":return Math.max(str_mod, dex_mod);
+    case  "fasle":return 0;
+    default: return 0;
+}
+    
+}
+
+//#######################################################################################################################################
+//                                                              Equipment 
+//#######################################################################################################################################
+
+
+function get_item_equipped(){
+    //helmet
+    switch (getchildidbyid('head')){
+        case    false: equipped_0 = false;break;
+        case "helmet": equipped_0 = helmet;break;
+        default      : equipped_0 = false;break;
+    }
+     
+
+    //Main Hand
+    switch (getchildidbyid('main')){
+        case false:         equipped_1 = false;         break;
+        case "dagger":      equipped_1 = dagger;        break;
+        case "shortsword":  equipped_1 = shortsword;    break;
+        case "lightaxe":    equipped_1 = lightaxe;      break;
+        case "lighthammer": equipped_1 = lighthammer;   break;
+        case "rapier":      equipped_1 = rapier;        break;
+        case "longsword":   equipped_1 = longsword;     break;
+        default:            equipped_1 = false;         break;
+    }
+
+    //Off Hand
+    switch (getchildidbyid('off')){
+        case false:         equipped_2 = false;         break;
+        case "dagger":      equipped_2 = dagger;        break;
+        case "shortsword":  equipped_2 = shortsword;    break;
+        case "lightaxe":    equipped_2 = lightaxe;      break;
+        case "lighthammer": equipped_2 = lighthammer;   break;
+        case "rapier":      equipped_2 = rapier;        break;
+        case "longsword":   equipped_2 = longsword;     break;
+        case "shield":      equipped_2 = shield;        break;
+        default:            equipped_2 = false;        break;    
+        }
+
+
+    //Armor
+    switch (getchildidbyid('armor')){
+        case "armorlight":  equipped_3 = armorlight;    break;
+        case "armormedium": equipped_3 = armormedium;   break;
+        case "platearmor":  equipped_3 = platearmor;    break;
+        default:            equipped_3 = false;         break; 
+        }
+
+
+    //Boots
+    switch (getchildidbyid('feet')){
+        case false: equipped_4 = false; break; 
+        case "boots": equipped_4 = boots; break; 
+        default:    equipped_3 = false; break; 
+        }
+}
  
 //#######################################################################################################################################
 //                                                              Equipped
@@ -929,11 +986,6 @@ function setmind(c){
 //#######################################################################################################################################
 //                                                            Training
 //#######################################################################################################################################
-
-
-var  tshield = false; tlarmor = false, tmarmor = false, tharmor = false, tlweapon = false, tmweapon = false;
-var SET_TRAIN=[tshield, tlarmor, tmarmor, tharmor, tlweapon, tmweapon];
-
 
 function settrain(a){
 
