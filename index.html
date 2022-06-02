@@ -350,11 +350,12 @@
 
   <!--Goblin to attack-->  
   <div class="goblin_gridd">
-  <div class="t_0021" id="goblintalk">Soon you will be able to fight uzzzss...</div>
-    <div><img id="goblin" onclick="fight1()" src="/pica/goblin_01.png" class="goblin_idle" alt=""> </div>
+  <div class="t_0021" id="goblintalk" onclick="test3()">Hey there mortal</div>
+  <div id="monster_hp_bar"></div>
+  <div id="monster_bar"></div>
   </div>
 
-
+  
   
 
   <!--Sidebar-->
@@ -366,7 +367,7 @@
     <div class="sidebardiv" onclick="closeSide('mySidebar')" >Lore</div>
     <div class="sidebardiv" onclick="closeSide('mySidebar'), openSide('mySettings', '400px')" >Settings</div>
     <div class="sidebardiv" onclick="closeSide('mySidebar'), openSide('myDevelopment', '300px')" >Development</div>
-    <div class="sidebardiv" onclick="closeSide('mySidebar')" >Patreon</div>
+    <a class="sidebardiv" href="https://www.patreon.com/Lina_Cyoa" onclick="closeSide('mySidebar')" >Patreon</a>
   </div>
   
   <!-- Character-->
@@ -391,7 +392,7 @@
     <div href="javascript:void(0)" class="closebtn" onclick="closeSide('myDevelopment')">×</div>
     <div class="sidebardiv" onclick="test1()">Hit </div>
     <div class="sidebardiv" onclick="test2()">DMG</div>
-    <div class="sidebardiv" onclick="test3()">cont </div>
+    <div class="sidebardiv" onclick="test3()">Summon Enemys</div>
     <div class="sidebardiv" onclick="test4()">int</div>
     <div class="sidebardiv"><br></div>
     <div class="sidebardiv" id="devfeedback"></div>
@@ -436,7 +437,7 @@
       <div class="itembox2" id="inventory_20" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
       <div class="itembox2" id="inventory_21" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
       <div class="itembox2" id="inventory_22" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-      <div class="itembox2" id="inventory_23" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="itembox3" id="inventory_23" ondrop="drop(event)" ondragover="allowDrop(event)">sell</div>
     </div>
   </div>
 

@@ -1,22 +1,26 @@
 //#######################################################################################################################################
 //                                                              Todoo in Africa
 //#######################################################################################################################################
-//when buying proficency add proficency 
 
-//add subtract stats when item worn
+//open Inventory with Icon in top left corner¨
 
-//Function for Weapon Attack
+//crit
 
-//Add Trainings Goblin, Wolf, Skeleton, Mage, Banidt, Orc, Ogre, Giant, Dragon
+//add combat attack, dodge, flee outside -> rest -> get quest -> discover Item -> discover store
+
+
 //Add Twohanded support
-//Inventory Weight(works withweight)
+
+//Ranged Weapon
+
+//Inventory Weight(works withstr)
 
 //add 8 weapon and 3 helmets, 3 boots, 6 bodypeaces (4erreihe)
 
 //#######################################################################################################################################
 //                                                          Testting
 //#######################################################################################################################################
-
+var ccount = 0;
 
 function test1(){
     document.getElementById("devfeedback").innerHTML = "Hit = "+main_hit()
@@ -29,8 +33,9 @@ function test2(){
 }
     
 function test3(){
-        document.getElementById("devfeedback").innerHTML = "Con Check = " + player_check("con")
-    
+
+ add_enemy(goblin,0),add_enemy(orc,1), add_enemy(ogre,2), add_enemy(giant,3)
+
 }
     
 function test4(){
@@ -57,7 +62,7 @@ function hide(bool){
 //                                                          Tools && Setup
 //#######################################################################################################################################
 
-var timeout =1000;
+var timeout =1;
 window.onload = setup;
 
 function setup() {   
@@ -112,9 +117,16 @@ function readbyid(id){
     return document.getElementById(id).innerHTML
 }
 
+function innerhtmlbyid(id,content){
+    document.getElementById(id).innerHTML =(content); 
+}
+
 function cap(number, cap){
 if (number>=cap) {return cap;}else{return number}
 }
+
+//write inner html from id
+function innerhtmlbyid(id,content){document.getElementById(id).innerHTML =(content);}  
 
 //Get the Itemnames inside of eqquipped inventroy from innnerhtml string 
 function getchildidbyid(id){
@@ -129,7 +141,7 @@ function returnname(text){
 }
 
 
-//#######################################################################################################################################
+//###################################a####################################################################################################
 //                                                          Stat Bar
 //#######################################################################################################################################
 
@@ -270,7 +282,19 @@ helmet        = [0, 0,  "false",   "head", "helmet", 2,  4],
 
 boots          = [0, 0,  "false",   "feet", "boots", 2,  5];
 
+//#######################################################################################################################################
+//                                                              monster
+//#######################################################################################################################################
 
+    //   0        1 2 3 4 5 6      7   8    9      10  11  12
+var //  name    ,stat             ,hit,atk, amt,   hp, ac, mod     
+goblin=["goblin",8 ,14,10,10,8 ,8 , 4 ,  6, 1  ,    7, 12,  2  , "/pica/goblin_01.png"  ],
+orc   =["orc"   ,16,12,16,7 ,11,10, 5 , 12, 1  ,   15, 13,  3  , "/pica/orc_06.png"     ],
+ogre  =["ogre"  ,19, 8,16,5 , 7, 7, 6 ,  8, 2  ,   59, 11,  4  , "/pica/ogre.png"       ],
+giant =["giant" ,21, 8,19,5 , 9, 6, 8 ,  8, 6  ,  105, 13,  5  , "/pica/Hill_Giant.png" ],
+dragon=["dragon",23,12,21,18,15,17, 11,  10,6  ,  207, 19,  6  , "/pica/dragon.png"     ];
+
+//'<img id="'enemy[0]'" onclick="fight1(enemy[0])" src="enem.y[13]" class="goblin_idle" alt="">
 //#######################################################################################################################################
 //                                                              Calc AC 
 //#######################################################################################################################################
@@ -310,23 +334,26 @@ function calc_ac(){
 //#######################################################################################################################################
 
 function main_hit(){
-console.log(mathRandomInt(1,20), weapon_mod(equipped_1[2]), weapon_train(equipped_1[8]));  return (mathRandomInt(1,20)+weapon_mod(equipped_1[2])+weapon_train(equipped_1[8]))
+return (mathRandomInt(1,20)+weapon_mod(equipped_1[2])+weapon_train(equipped_1[8]))
 }
 
 function main_atk(){
 var dmg = 0
-if (equipped_1 == false){return (1+str_mod)}else{ for(i =0; i < equipped_1[1]; i++){dmg += mathRandomInt(1, equipped_1[0]); dmg += weapon_mod(equipped_1[2]);return dmg}
-}}
+if (equipped_1 == false){dmg = (1+str_mod)}else{ console.log(equipped_1);for(i =0; i < equipped_1[1]; i++){dmg += mathRandomInt(1, equipped_1[0]);} dmg += weapon_mod(equipped_1[2])}
+if (dmg<0){dmg=0;};
+
+console.log(dmg)
+return dmg}
 
 
 function off_hit(){
-if (equipped_2 == false){return (mathRandomInt(1,20)+str_mod)}else{return (mathRandomInt(1,20)+weapon_mod(equipped_2[2]))}
+return (mathRandomInt(1,20)+weapon_mod(equipped_2[2])+weapon_train(equipped_2[8]))
 }
 
 function off_atk(){
 var dmg = 0
-if (equipped_2 == false){return (1+str_mod)}else{ for(var i =0; i < equipped_2[2]; i++){dmg += mathRandomInt(1, equipped_2[0])}+weapon_mod(equipped_0[2]);return dmg}
-}
+if (equipped_2 == false){return (1+str_mod)}else{ for(i =0; i < equipped_1[1]; i++){dmg += mathRandomInt(1, equipped_1[0]);return dmg}
+}}
 
 function weapon_train(train){
     switch(train){
@@ -406,10 +433,10 @@ function get_item_equipped(){
 }
  
 //#######################################################################################################################################
-//                                                              Equipped
+//                                                              Dragg & Dropp
 //#######################################################################################################################################
 
-var dragitem, inventoryslots=[];
+var dragitem, inventoryslots=[], sold =[0, 0, 0, 0, 0, 0, 0, 0];
 
 for (i =  0; i < 24; i++){inventoryslots[i]="inventory_"+i };
 
@@ -419,16 +446,24 @@ function allowDrop(ev) {
 }
   
 function drag(ev, item) {
+
+    console.log(item)
     ev.dataTransfer.setData("text", ev.target.id);
     dragitem = item;
-    console.log(dragitem[3]);
+
+    console.log(dragitem);
 
 }
   
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    console.log(ev.target.className);
+    console.log(ev.target.id);
+
+    //sell Item
+   if (ev.target.id == "inventory_23"){GP+=dragitem[6];dragitem = sold; ev.target.appendChild(document.getElementById(data));document.getElementById("inventory_23").innerHTML = 'sell'}
+
+   //Move Item
    if (getpalce(ev.target.id)){ev.target.appendChild(document.getElementById(data));}
 
 }
@@ -447,11 +482,11 @@ function getpalce(targetid){
 
     switch (targetid){
         case "head":  if(dragitem[3]=="head")                       {return true}else{return false;}
-        case "off":   if(dragitem[3]=="off" || 
+        case "off":   if(dragitem[3]=="off"   || 
                          dragitem[3]=="either"||
                          dragitem[3]=="shield")                     {return true}else{return false;}
-        case "main":  if(dragitem[3]=="either"  || 
-                         dragitem[3]=="main")                     {return true}else{return false;}
+        case "main":  if(dragitem[3]=="either"|| 
+                         dragitem[3]=="main")                       {return true}else{return false;}
         case "armor": if(dragitem[3]=="armor")                      {return true}else{return false;}
         case "feet":  if(dragitem[3]=="feet")                       {return true}else{return false;}
 
@@ -601,7 +636,7 @@ var choose_0010 = 0, lock_02 = false;
 function choose_pb_roll(i){
 
     if (i==2)
-    {   
+    {       
          //if onerun needed
         if (lock_02 == false&&choose_0010 == 0)
             {
@@ -1020,25 +1055,80 @@ function settrain(a){
 //#######################################################################################################################################
 //                                                   Fight a goblin
 //#######################################################################################################################################
+var enemy_0, enemy_1, enemy_2, enemy_3, enemy_4, enemy_5, enemy_6, enemy_7;
 
-var ccount =0;
 
-function fight1(){
+      //   0        1 2 3 4 5 6      7   8    9      10  11  12 , 13
+      //  name    ,stat             ,hit,atk, amt,   hp, ac, mod, PICADRESSE    
+//goblin=["goblin",8 ,14,10,10,8 ,8 , 4 ,  6, 1  ,    7, 12,"dex"],
+//'<img id="'enemy[0]'" onclick="fight1(enemy[0])" src="enem.y[13]" class="goblin_idle" alt="">
 
-    switch(ccount){
-    case 0: document.getElementById("goblintalk").innerHTML =('Soon you will be able to fight uzzzss...'); break;
-    case 1: document.getElementById("goblintalk").innerHTML =('Aaggh, stop this foolish clickiin grrrr'); break;
-    case 2: document.getElementById("goblintalk").innerHTML =('You cannot fightzzz me yet!'); break;
-    case 3: document.getElementById("goblintalk").innerHTML =('Can.. not.. click me'), document.getElementById("goblin").classList.add('goblin_atk1');break;
-    case 4: document.getElementById("goblintalk").innerHTML =('YOU CANNOT BZZEAT MEE'), document.getElementById("goblin").classList.add('goblin_atk2');break;
-    case 5: document.getElementById("goblintalk").innerHTML =('AARGGHH'), document.getElementById("goblin").classList.add('goblin_atk3');break;
-    case 6: document.getElementById("goblintalk").innerHTML =('You have too much time lina 😡'), 
-    document.getElementById("goblin").classList.remove('goblin_atk3'), 
-    document.getElementById("goblin").classList.remove('goblin_atk2'), 
-    document.getElementById("goblin").classList.remove('goblin_atk1'), 
-    document.getElementById("goblin").classList.add('goblin_idle');break;
-    default: break;
-    }
-    ccount++;
+function start_combat(){
+
+    //wer
+
+    var string = "Fighting " ;
+    for(i = 0; i<nr_enemy.length; i++){string += ("+"+name_enemy[nr_enemy[i]]+"+', '")}
+    string += "."
+
+    //nr of enemyies : (nr_enemy.length
+
+
+
+
+    //init reienfolge
+
+    
+
+    //angriff player
+
+    //angriff monster
+}
+
+//remove enemy
+function remove_enemy(nr){
+    enemy = document.getElementById(nr);
+    enemy.parentNode.removeChild(enemy);
+
+    enemy = document.getElementById("hp"+nr);
+    enemy.parentNode.removeChild(enemy);
+}
+
+//Add Enemy
+function add_enemy(type, nr){
+    
+hp="💀";
+for (i = 1; i<=(Math.floor(type[10]/100));i++)      {hp+="🟧"};
+for (i = 1; i<=(Math.floor(type[10]%100/10));i++)   {hp+="🟪"};
+for (i = 1; i<=(Math.floor(type[10]%10));i++)       {hp+="🟥"};
+hp+="💀";
+
+document.getElementById("monster_hp_bar").innerHTML +=("<label id='hp"+nr+"'>"+"         "+hp+"</label>");
+  
+document.getElementById("monster_bar").innerHTML += '<img id="'+nr+'" onclick="" src="'+type[13]+'" class="enemy_idle" alt="">'
+
+switch(nr){
+case 0: enemy_0 = type; break;
+case 1: enemy_1 = type; break;
+case 2: enemy_2 = type; break;
+case 3: enemy_3 = type; break;
+case 4: enemy_4 = type; break;
+case 5: enemy_5 = type; break;
+case 6: enemy_6 = type; break;
+case 7: enemy_7 = type; break;
+}
+}
+
+
+function updated_hp_enemy(enemy){
+hp="💀";
+for (i = 1; i<=(Math.floor(enemy[10]/100));i++)      {hp+="🟧"};
+for (i = 1; i<=(Math.floor(enemy[10]%100/10));i++)   {hp+="🟪"};
+for (i = 1; i<=(Math.floor(enemy[10]%10));i++)       {hp+="🟥"};
+hp+="💀";
+
+
+
+document.getElementById("hp"+nr).innerHTML ='"         "' + hp;
 }
 

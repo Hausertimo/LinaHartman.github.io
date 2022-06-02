@@ -288,6 +288,36 @@ width: 50px;
 overflow: hidden;
 }
 
+.itembox3{
+  font-size: 20;
+  letter-spacing: 2px;
+  word-spacing: 2.2px;
+  position: absolute;
+  color: rgba(136, 84, 25, 0.836);
+  background-color: rgba(227, 157, 110, 0.775);
+  border-radius: 15px;
+  border-style: solid;
+  border-color: rgb(100, 67, 26);
+  border-width: 3px; 
+  opacity: 0.8; 
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  
+}
+
+.sellitem { 
+  margin-top: 8px; 
+  font-size: 20;
+  letter-spacing: 2px;
+  word-spacing: 2.2px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align: center;
+  padding-top: 0;
+  padding: bottom 0;
+  color: rgba(136, 84, 25, 0.836);
+}
+
 #inventory_0{top: 400px; left: 25px;}
 #inventory_1{top: 400px; left: 100px;}
 #inventory_2{top: 400px; left: 175px;}
@@ -770,13 +800,18 @@ text-transform: none;
           Fighting a Goblin 
 #######################################################################################################################################*/
 
+.hp_bar{
+  padding: 10px;
+  color: red;
+  opacity: 0.9;
+}
 
 .goblin_gridd {
 
   margin-bottom: 100px;
 }
 
-.goblin_idle  {
+.enemy_idle  {
 
   width:240px;
   height:240px;
@@ -791,22 +826,6 @@ text-transform: none;
   height:240px;
   position:relative;
   -webkit-animation:attack1 2.5s ease-in-out alternate infinite;
-}
-
-.goblin_atk2 {
-
-  width:240px;
-  height:240px;
-  position:relative;
-  -webkit-animation:attack1 0.5s ease-in-out alternate infinite;
-}
-
-.goblin_atk3 {
-
-  width:240px;
-  height:240px;
-  position:relative;
-  -webkit-animation:attack2 0.2s ease-in-out alternate infinite;
 }
 
 
@@ -834,17 +853,6 @@ text-transform: none;
   }
 }
 
-@-webkit-keyframes attack2{
-  from {
-     left:600px;
-     top:0px;
-  }
-  
-  to {
-     left:-600px;
-     top:0px;
-  }
-}
 /* #######################################################################################################################################
           Body 
 #######################################################################################################################################*/
