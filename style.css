@@ -821,10 +821,12 @@ text-transform: none;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   text-align: center;
   background-color: rgb(232, 203, 159);
-  padding-top: 0;
-  padding: bottom 0;
+  padding: 2px;
+  border-radius: 4px;
   color: rgba(21, 14, 6, 0.836);
   width: 100px;
+  height: 60px;
+  cursor: pointer;
 }
 
 .bar_atk{  

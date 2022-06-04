@@ -2,6 +2,8 @@
 //                                                              Todoo in Africa
 //#######################################################################################################################################
 
+//lootboxac is bugged
+
 //xp
 
 //open Inventory with Icon in top left corner¨
@@ -137,8 +139,6 @@ function returnname(text){
     return result;
 }
 
-function changeclassbyid(id, name){document.getElementById(id).className = name;
-}
 
 //###################################a####################################################################################################
 //                                                          Stat Bar
@@ -269,7 +269,7 @@ shortsword     = [6,  1, "str", "either", "shortsword" ,12, 10, "/pica/sword_01.
 lightaxe       = [6,  1, "str", "either", "lightaxe"   ,12, 10, "/pica/axe_01.png", "light"],
 heavyaxe       = [8,  1, "str", "either", "heavyaxe"   ,18, 18, "/pica/axe_01.png", "heavy"],
 lighthammer    = [6,  1, "str", "either", "lighthammer"   ,17, 8, "/pica/hammer_01.png", "light"],
-heavyhammer    = [8,  1, "str", "either", "heavyhammer"   ,17, 8, "/pica/hammer_01.png", "heavy"],
+heavyhammer    = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/hammer_01.png", "heavy"],
 rapier         = [6,  1, "dex", "either", "rapier"      ,12, 10],
 longsword      = [8,  1, "str",   "main", "longsword"   ,24, 10],
 shield         = [0,  2,"false", "shield","shield"    ,8 , 10, "/pica/shield_06.png", "shield"],
@@ -293,7 +293,14 @@ goblin=["goblin",8 ,14,10,10,8 ,8 , 4 ,  6, 1  ,    7, 12,  2  , "/pica/goblin_0
 orc   =["orc"   ,16,12,16,7 ,11,10, 5 , 12, 1  ,   15, 13,  3  , "/pica/orc_06.png"     ],
 ogre  =["ogre"  ,19, 8,16,5 , 7, 7, 6 ,  8, 2  ,   59, 11,  4  , "/pica/ogre.png"       ],
 giant =["giant" ,21, 8,19,5 , 9, 6, 8 ,  8, 6  ,  105, 13,  5  , "/pica/Hill_Giant.png" ],
-dragon=["dragon",23,12,21,18,15,17, 11,  10,6  ,  207, 19,  6  , "/pica/dragon.png"     ];
+dragon=["dragon",23,12,21,18,15,17, 11,  10,6  ,  207, 19,  6  , "/pica/dragon.png"     ],
+
+qweqwe  =["ogre"  ,19, 8,16,5 , 7, 7, 6 ,  8, 2  ,   59, 11,  4  , "/pica/ogre.png"       ],
+qweqw =["giant" ,21, 8,19,5 , 9, 6, 8 ,  8, 6  ,  105, 13,  5  , "/pica/Hill_Giant.png" ],
+wqeqwe=["dragon",23,12,21,18,15,17, 11,  10,6  ,  207, 19,  6  , "/pica/dragon.png"     ],
+qweeqw  =["ogre"  ,19, 8,16,5 , 7, 7, 6 ,  8, 2  ,   59, 11,  4  , "/pica/ogre.png"       ],
+asfsd =["giant" ,21, 8,19,5 , 9, 6, 8 ,  8, 6  ,  105, 13,  5  , "/pica/Hill_Giant.png" ],
+swqe=["dragon",23,12,21,18,15,17, 11,  10,6  ,  207, 19,  6  , "/pica/dragon.png"     ];
 
 //'<img id="'enemy[0]'" onclick="fight1(enemy[0])" src="enem.y[13]" class="goblin_idle" alt="">
 //#######################################################################################################################################
@@ -303,11 +310,11 @@ dragon=["dragon",23,12,21,18,15,17, 11,  10,6  ,  207, 19,  6  , "/pica/dragon.p
 function calc_ac(){
     //Calculate AC
     switch (equipped_3[4]){
-        case false:           AC = 10 +dex_mod;                    break;
-        case "armorlight":    AC = equipped_3[1] + dex_mod;                   if(train_mod[51]!= true){AC=10+dex_mod}; break;
-        case "armormedium":   AC = equipped_3[1] + cap(dex_mod,2);            if(train_mod[52]!= true){AC=10}; break;        
-        case "platearmor":    AC = equipped_3[1];                             if(train_mod[53]!= true){AC=10}; break;
-        default:              AC = 10 +dex_mod;                   break;
+        case false:           AC = 10 +dex_mod + ACB;                   break;
+        case "armorlight":    AC = equipped_3[1] + dex_mod + ACB;           if(train_mod[51]!= true){AC=10+dex_mod}; break;
+        case "armormedium":   AC = equipped_3[1] + cap(dex_mod,2) + ACB;    if(train_mod[52]!= true){AC=10}; break;        
+        case "platearmor":    AC = equipped_3[1] + ACB;                     if(train_mod[53]!= true){AC=10}; break;
+        default:              AC = 10 +dex_mod + ACB;                   break;
     }
 
     //helmet AC
@@ -335,8 +342,8 @@ function calc_ac(){
 //#######################################################################################################################################
 
 function main_hit(){
-var roll = (mathRandomInt(1,20)+weapon_mod(equipped_1[2])+weapon_train(equipped_1[8]))
-console.log("Treffer total "+roll+": 1d20 + Weapon Modifier like str/dex "+weapon_mod(equipped_1[2])+" + Weapon Training "+weapon_train(equipped_1[8]))
+var roll = (1000)//mathRandomInt(1,20)+weapon_mod(equipped_1[2])+weapon_train(equipped_1[8]))
+//console.log("Treffer total "+roll+": 1d20 + Weapon Modifier like str/dex "+weapon_mod(equipped_1[2])+" + Weapon Training "+weapon_train(equipped_1[8]))
 return(roll)
 }
 
@@ -350,7 +357,7 @@ return dmg}
 
 function off_hit(){
 var roll = (mathRandomInt(1,20)+weapon_mod(equipped_2[2])+weapon_train(equipped_2[8]))
-console.log("Hit OFF total "+roll+": 1d20 + Weapon Modifier like str/dex "+weapon_mod(equipped_2[2])+" + Weapon Training "+weapon_train(equipped_2[8]))
+//console.log("Hit OFF total "+roll+": 1d20 + Weapon Modifier like str/dex "+weapon_mod(equipped_2[2])+" + Weapon Training "+weapon_train(equipped_2[8]))
 return (roll)
 }
 
@@ -358,7 +365,7 @@ function off_atk(){
 var dmg = 0
 if (equipped_2 == false){dmg = (1+str_mod)}else{ for(i =0; i < equipped_2[1]; i++){dmg += mathRandomInt(1, equipped_1[0]);}}
 if (dmg<0){dmg=0;};
-console.log("Damage OFF total "+dmg+": Weapondice "+equipped_2[1]+"d"+equipped_2[0]+"No weaponmodifier on Offhand")
+//console.log("Damage OFF total "+dmg+": Weapondice "+equipped_2[1]+"d"+equipped_2[0]+"No weaponmodifier on Offhand")
 return (dmg);
 }
 
@@ -448,8 +455,9 @@ function get_item_equipped(){
 //#######################################################################################################################################
 //                                                   Fight a goblin
 //#######################################################################################################################################
-var enemy_0, enemy_1, enemy_2, enemy_3, enemy_4, enemy_5, enemy_6, enemy_7, player_hp = -99, dcount, lock_04 = true;
-
+var enemy_0, enemy_1, enemy_2, enemy_3, enemy_4, enemy_5, enemy_6, enemy_7, player_hp = 0, dcount, lock_04 = true;
+//setTimeout(player_rest('longrest'),900);
+//setTimeout(player_hp_bar,1000);
 
 //         0        1 2 3 4 5 6      7   8    9      10  11  12 , 13
 //         name   ,stat             ,hit,atk, amt,   hp, ac, mod, PICADRESSE    
@@ -457,80 +465,170 @@ var enemy_0, enemy_1, enemy_2, enemy_3, enemy_4, enemy_5, enemy_6, enemy_7, play
     //setTimeout(, 3000, enemy);
 
 
-function changepicture(event){
-    alert(event)
-}
+//cheat healthgain
+function add_hp(number){player_hp+=number; player_hp_bar()}
 
 
+//let people change their avatar
+function changepicture(event){alert(event)}
+
+//Full Attack cycle -------------------------------------------------
 function attack(enemy){
-    console.log(enemy[30])
+
     if (lock_04==true){
     lock_04 = false;
 
+    var timer = 0; 
+
+    //starts combat animations
     call_animations(enemy);
 
-    //Main_hand attack
-    setTimeout(main_hand_attack, 1000, enemy);
+    timer+=800;
 
-    //off hand attack
-    //setTimeout(off_hand_attack, 3000, enemy);
+    //Main_hand attack
+    setTimeout(main_hand_attack, timer, enemy);
+
+        timer+=800
+
+        //check if dead
+        setTimeout(remove_enemy_if_dead, timer, enemy);
+
+        timer+=500
+
+        //enemy attack
+        setTimeout(enemy_attack,timer , enemy);
+
+    timer+=1500
+
+    //off hand attacks
+    if (equipped_2 != shield){setTimeout(off_hand_attack, timer, enemy);}
     
-    //enemy atk
-    setTimeout(update_enemy_state, 3500, enemy);
-    
-   
-    player_hp_bar();
+        //check if dead
+        timer+=800
+        setTimeout(remove_enemy_if_dead, timer, enemy);
+
     //make sure player can't stack attacks
-    setTimeout(setlock_04,4500);
+    setTimeout(setlock_04,timer);
+    }
 }
-}
+// -----------------------------------------------------------
+
+
+// Animation Cycle
 
     //coordinate attack animations
     function call_animations(enemy){
-    //main &off atk player
-    setTimeout(changeclassbyid, 0, "player_char", "enemy_atk_2");
-    setTimeout(changeclassbyid, 0, "player_bar", "bar_atk");
 
-    setTimeout(changeclassbyid, 800, "player_char", "player_idle");
-    setTimeout(changeclassbyid, 800, "player_bar", "");
+    var timer = 0;
 
-    //animate atk of enemy
-    setTimeout(changeclassbyid, 3000, enemy[30], "enemy_atk_1");
-    setTimeout(changeclassbyid, 3000, "hp"+enemy[30], "enemy_atk_1");
+    //main atk player
+    setTimeout(changeclassbyidplayer, timer, "player_char", "enemy_atk_2");
+    setTimeout(changeclassbyidplayer, timer, "player_bar", "bar_atk");
 
-    //animate atk of enemy
-    setTimeout(changeclassbyid, 4000, enemy[30], "enemy_idle");
-    setTimeout(changeclassbyid, 4000, "hp"+enemy[30], "");
-    console.log("inanimations")
+    timer+=1600;
+
+    setTimeout(changeclassbyidplayer, timer, "player_char", "player_idle");
+    setTimeout(changeclassbyidplayer, timer, "player_bar", "");
+
+        
+
+        //animate atk of enemy
+        setTimeout(changeclassbyidenemy, timer, enemy[30], "enemy_atk_1", enemy);
+        setTimeout(changeclassbyidenemy, timer, "hp"+enemy[30], "enemy_atk_1", enemy);
+    
+        timer+=1000
+    
+        //animate atk of enemy
+        setTimeout(changeclassbyidenemy, timer, enemy[30], "enemy_idle", enemy);
+        setTimeout(changeclassbyidenemy, timer, "hp"+enemy[30], "", enemy);
+    
+
+
+    //if offhandattack animate offhandattack
+    if (equipped_2 != shield){
+    timer+=200;
+    setTimeout(changeclassbyidplayeroff, timer, "player_char", "enemy_atk_2", enemy);
+    setTimeout(changeclassbyidplayeroff, timer, "player_bar", "bar_atk", enemy);
+
+    timer+=1600;
+
+    setTimeout(changeclassbyidplayeroff, timer, "player_char", "player_idle", enemy);
+    setTimeout(changeclassbyidplayeroff, timer, "player_bar", "", enemy);
+    } 
     }
 
+    //only offatk if both alive
+    function changeclassbyidplayeroff(id, name, enemy){if(player_hp>0 && enemy[10]>0)document.getElementById(id).className = name;}
+    
+    //animation for enemy
+    function changeclassbyidenemy(id, name, enemy){if(enemy[10]>0)document.getElementById(id).className = name;}    
+
+    //animation for player
+    function changeclassbyidplayer(id, name){if(player_hp>0)document.getElementById(id).className = name;}
+
     //prevents multiple overlaying attacks
-    function setlock_04(){lock_04=true;console.log("change to true");}
+    function setlock_04(){lock_04=true;}
 
     //main hand attack
-    function main_hand_attack(enemy){if(main_hit()>=enemy[11]){enemy[10]-=main_atk(), console.log("Hit Main!")}else{console.log("Miss Main!")}}
+    function main_hand_attack(enemy){if(main_hit()>=enemy[11] && player_hp>0){dmg = main_atk();enemy[10]-=dmg,updated_hp_enemy(enemy), console.log("Hit Main!  Damage: "+dmg+" HP: " +enemy[10])}else if(player_hp>0){console.log("Miss Main!")}}
 
     //offhand attack
-    function off_hand_attack(enemy){if (equipped_2 != shield){if(off_hit()>=enemy[11]){enemy[10]-=off_atk(), console.log("Hit Off!")}else{console.log("Miss Off!")}}}
+    function off_hand_attack(enemy){if(equipped_2 != shield && player_hp>0){if(off_hit()>=enemy[11]){dmg = off_atk();enemy[10]-=dmg,updated_hp_enemy(enemy),console.log("Hit Off! Damage:"+dmg+"  HP: "+enemy[10])}else if(player_hp>0){console.log("Miss Off!")}}}
 
     //adjust HP and remove enemy on death
-    function update_enemy_state(enemy){if(enemy[10]<1){remove_enemy(enemy), console.log("Dead!")}else{updated_hp_enemy(enemy), attack_back(enemy)}}
+    function remove_enemy_if_dead(enemy){if(enemy[10]<1)remove_enemy(enemy), console.log("Enemy Dead!");}
 
-    //resets attack animation of attacking creature
-    function change_atk_idl(enemy){}
+    //enemy attack
+    function enemy_attack(enemy){
+        dmg = 0, msg ="";
+        //check if enemy alive
+        if (enemy[10]>0){
+        //actual attack
+        if((mathRandomInt(1,20)+enemy[7])>=AC){for (i = 0; i<enemy[9];i++){dmg+=mathRandomInt(1,enemy[8])}; dmg+=enemy[12]; msg+="Enemy Hit! Damage: "+dmg}else{msg+="Enemy Miss! "}
+        //player benefits
+        player_hp-=dmg; msg+=" HP: "+player_hp; if(player_hp<1){player_hp=0; msg = "The Enemy killed you!"}; player_hp_bar(); console.log(msg);}
+    }
 
 
-function attack_back(enemy){
-    dmg = 0
-    if((mathRandomInt(1,20)+enemy[7])>=AC){for (i = 0; i<enemy[9];i++){dmg+=mathRandomInt(1,enemy[8])}; dmg+=enemy[12]; console.log("Enemy Hit!")}else{console.log("Enemy Miss!")}
-    player_hp-=dmg; if(player_hp<1){player_hp=0;}
-    console.log("Damage "+dmg+", Player HP "+player_hp);
+//innerhtmlbyid(id,content)
+
+
+//take breaks for hp, set seperate var for hp combat
+function player_rest(option){
+    sleepmod=con_mod; if(sleepmod<0)sleepmod=0;
+    switch(option){
+        case "shortrest":   player_hp += mathRandomInt(1,6)+   sleepmod ; if(HP<player_hp)player_hp=HP;break;
+        case "longrest":    player_hp += mathRandomInt(3,6)+(3*sleepmod); if(HP<player_hp)player_hp=HP;break;
+    }
+}
+
+
+//remove all enemies
+function remove_enemy_all(){
+    var parent = document.getElementById('monster_bar');
+    var children = Array.from(parent.children);
+    var ids = children.map(element => {return element.id;});
+
+    for (i=0; i<children.length; i++){
+    childtoremove = document.getElementById(ids[i]);
+    childtoremove.parentNode.removeChild(childtoremove);
+
+    monstertoremove = document.getElementById("hp"+ids[i]);
+    monstertoremove.parentNode.removeChild(monstertoremove);}
+}
+
+//remove enemy(hpbar, bar)
+function remove_enemy(enemy){
+    childtoremove = document.getElementById(enemy[30]);
+    childtoremove.parentNode.removeChild(childtoremove);
+
+    monstertoremove = document.getElementById("hp"+enemy[30]);
+    monstertoremove.parentNode.removeChild(monstertoremove);
+
+    enemy[0] = false, enemy[10]= 0;
 }
 
 function player_hp_bar(){
-
-    //initial setup
-    if (player_hp == -99){player_rest("set")}
 
     var php = "";//create HP Bar
     for (i = 1; i<=(Math.floor(player_hp/100));i++)      {php+="🟧"};   
@@ -538,19 +636,29 @@ function player_hp_bar(){
     for (i = 1; i<=(Math.floor(player_hp%10));i++)       {php+="🟥"};
     
     //Check if player dead
-    if (player_hp == 0){php="💀"}
+    if (player_hp == 0){php="💀"};
 
     //Write HP Bar for player
-    document.getElementById("player_bar").innerHTML = php
+    innerhtmlbyid("player_bar",php);
 
+}
+
+
+//update hp bar of single enemy
+function updated_hp_enemy(enemy){
+
+    hp="💀";
+    for (i = 1; i<=(Math.floor(enemy[10]/100));i++)      {hp+="🟧"};
+    for (i = 1; i<=(Math.floor(enemy[10]%100/10));i++)   {hp+="🟪"};
+    for (i = 1; i<=(Math.floor(enemy[10]%10));i++)       {hp+="🟥"};
+    hp+="💀";
+
+    document.getElementById("hp"+enemy[30]).innerHTML = '    '+ hp;
 }
 
 
 function add_enemy(type){
     
-    //get playerhp on enemy spawn
-    player_hp_bar
-
     //check free spot to be apointed
     var parent = document.getElementById('monster_bar');
     var children = Array.from(parent.children);
@@ -585,42 +693,6 @@ function add_enemy(type){
         case 7: enemy_7 = type; enemy_7[30] = "7"; break;
     }
 }
-
-
-
-//remove enemy(hpbar, bar)
-function remove_enemy(enemy){
-    childtoremove = document.getElementById(enemy[30]);
-    childtoremove.parentNode.removeChild(childtoremove);
-
-    monster = document.getElementById("hp"+enemy[30]);
-    monster.parentNode.removeChild(monster);
-}
-
-
-//update hp bar of single enemy
-function updated_hp_enemy(enemy){
-
-    hp="💀";
-    for (i = 1; i<=(Math.floor(enemy[10]/100));i++)      {hp+="🟧"};
-    for (i = 1; i<=(Math.floor(enemy[10]%100/10));i++)   {hp+="🟪"};
-    for (i = 1; i<=(Math.floor(enemy[10]%10));i++)       {hp+="🟥"};
-    hp+="💀";
-
-    document.getElementById("hp"+enemy[30]).innerHTML = '    '+ hp;
-}
-
-
-//take breaks for hp, set seperate var for hp combat
-function player_rest(option){
-    switch(option){
-        case "shortrest":   player_hp += mathRandomInt(1,6)+   con_mod ; if(HP<player_hp)player_hp=HP;break;
-        case "longrest":    player_hp += mathRandomInt(3,6)+(3*con_mod); if(HP<player_hp)player_hp=HP;break;
-        case "set":         player_hp = HP ;break;
-    }
-}
-
-
 
 //#######################################################################################################################################
 //                                                              Dragg & Dropp
@@ -694,7 +766,7 @@ var itemcount = 0;
 function buy_item(item){
 
 //Look if enough money
-if(item [6]>GP){console.log("Not enough Money dear Friedn"); return}  
+if(item [6]>GP){console.log("Not enough Money dear Friend"); return}  
 GP -= item[6]
 
 
