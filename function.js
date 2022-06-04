@@ -29,12 +29,12 @@ function test1(){
     
 function test2(){
     document.getElementById("devfeedback").innerHTML = "DMG = "+main_atk()
-        
+
 }
     
 function test3(){
 
- add_enemy(goblin,0),add_enemy(orc,1), add_enemy(ogre,2), add_enemy(giant,3)
+ add_enemy(goblin, 1),add_enemy(orc, 2), add_enemy(ogre), add_enemy(giant)
 
 }
     
@@ -137,6 +137,8 @@ function returnname(text){
     return result;
 }
 
+function changeclassbyid(id, name){document.getElementById(id).className = name;
+}
 
 //###################################a####################################################################################################
 //                                                          Stat Bar
@@ -262,18 +264,20 @@ switch (mod){
 //#######################################################################################################################################
 
 var            //dmg dice mod    hand      name/id     weight price
-dagger         = [4,  1, "dex", "either", "dagger"      ,1 , 10, "/pica/dagger_01.png", "light"],
+dagger         = [4,  1,"either","either", "dagger"      ,1 , 4, "/pica/dagger_01.png", "none"],
 shortsword     = [6,  1, "str", "either", "shortsword" ,12, 10, "/pica/sword_01.png", "light"],
 lightaxe       = [6,  1, "str", "either", "lightaxe"   ,12, 10, "/pica/axe_01.png", "light"],
+heavyaxe       = [8,  1, "str", "either", "heavyaxe"   ,18, 18, "/pica/axe_01.png", "heavy"],
 lighthammer    = [6,  1, "str", "either", "lighthammer"   ,17, 8, "/pica/hammer_01.png", "light"],
+heavyhammer    = [8,  1, "str", "either", "heavyhammer"   ,17, 8, "/pica/hammer_01.png", "heavy"],
 rapier         = [6,  1, "dex", "either", "rapier"      ,12, 10],
 longsword      = [8,  1, "str",   "main", "longsword"   ,24, 10],
-shield         = [0,  2, "false", "shield","shield"    ,8 , 10, "/pica/shield_06.png", "shield"],
+shield         = [0,  2,"false", "shield","shield"    ,8 , 10, "/pica/shield_06.png", "shield"],
 
 
 armorlight         = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_03.png"],
 armormedium        = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_01.png"],
-platearmor         = [0, 18,  "false", "armor", "platearmor", 80, 25, "/pica/heavy_armor_02.png"],
+platearmor         = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_02.png"],
 
 helmet        = [0, 0,  "false",   "head", "helmet", 2,  4],
 
@@ -363,6 +367,7 @@ function weapon_train(train){
         case shield: return 0;
         case "light": if(train_mod[54]){return 2}else{return 0};
         case "heavy": if(train_mod[55]){return 2}else{return 0};
+        case "none" : return 2;
         default: return 0;
     }
 }
@@ -398,7 +403,9 @@ function get_item_equipped(){
         case "dagger":      equipped_1 = dagger;        break;
         case "shortsword":  equipped_1 = shortsword;    break;
         case "lightaxe":    equipped_1 = lightaxe;      break;
+        case "heavyaxe":    equipped_1 = heavyaxe;      break;
         case "lighthammer": equipped_1 = lighthammer;   break;
+        case "heavyhammer": equipped_1 = heavyhammer;   break;
         case "rapier":      equipped_1 = rapier;        break;
         case "longsword":   equipped_1 = longsword;     break;
         default:            equipped_1 = false;         break;
@@ -410,7 +417,9 @@ function get_item_equipped(){
         case "dagger":      equipped_2 = dagger;        break;
         case "shortsword":  equipped_2 = shortsword;    break;
         case "lightaxe":    equipped_2 = lightaxe;      break;
+        case "heavyaxe":    equipped_2 = heavyaxe;      break;
         case "lighthammer": equipped_2 = lighthammer;   break;
+        case "heavyhammer": equipped_2 = heavyhammer;   break;
         case "rapier":      equipped_2 = rapier;        break;
         case "longsword":   equipped_2 = longsword;     break;
         case "shield":      equipped_2 = shield;        break;
@@ -439,32 +448,77 @@ function get_item_equipped(){
 //#######################################################################################################################################
 //                                                   Fight a goblin
 //#######################################################################################################################################
-var enemy_0, enemy_1, enemy_2, enemy_3, enemy_4, enemy_5, enemy_6, enemy_7, player_hp = -99, dcount;
+var enemy_0, enemy_1, enemy_2, enemy_3, enemy_4, enemy_5, enemy_6, enemy_7, player_hp = -99, dcount, lock_04 = true;
 
 
 //         0        1 2 3 4 5 6      7   8    9      10  11  12 , 13
 //         name   ,stat             ,hit,atk, amt,   hp, ac, mod, PICADRESSE    
 //goblin=["goblin",8 ,14,10,10,8 ,8 , 4 ,  6, 1  ,    7, 12,  2 , "pic.png"],
+    //setTimeout(, 3000, enemy);
+
+
+function changepicture(event){
+    alert(event)
+}
+
 
 function attack(enemy){
+    console.log(enemy[30])
+    if (lock_04==true){
+    lock_04 = false;
 
-    if (player_hp == -99){player_rest("set")}
-    player_hp_bar()
+    call_animations(enemy);
+
+    //Main_hand attack
+    setTimeout(main_hand_attack, 1000, enemy);
+
+    //off hand attack
+    //setTimeout(off_hand_attack, 3000, enemy);
+    
+    //enemy atk
+    setTimeout(update_enemy_state, 3500, enemy);
+    
+   
+    player_hp_bar();
+    //make sure player can't stack attacks
+    setTimeout(setlock_04,4500);
+}
+}
+
+    //coordinate attack animations
+    function call_animations(enemy){
+    //main &off atk player
+    setTimeout(changeclassbyid, 0, "player_char", "enemy_atk_2");
+    setTimeout(changeclassbyid, 0, "player_bar", "bar_atk");
+
+    setTimeout(changeclassbyid, 800, "player_char", "player_idle");
+    setTimeout(changeclassbyid, 800, "player_bar", "");
+
+    //animate atk of enemy
+    setTimeout(changeclassbyid, 3000, enemy[30], "enemy_atk_1");
+    setTimeout(changeclassbyid, 3000, "hp"+enemy[30], "enemy_atk_1");
+
+    //animate atk of enemy
+    setTimeout(changeclassbyid, 4000, enemy[30], "enemy_idle");
+    setTimeout(changeclassbyid, 4000, "hp"+enemy[30], "");
+    console.log("inanimations")
+    }
+
+    //prevents multiple overlaying attacks
+    function setlock_04(){lock_04=true;console.log("change to true");}
 
     //main hand attack
-    if(main_hit()>=enemy[11]){enemy[10]-=main_atk(), console.log("Hit Main!")}else{console.log("Miss Main!")}
+    function main_hand_attack(enemy){if(main_hit()>=enemy[11]){enemy[10]-=main_atk(), console.log("Hit Main!")}else{console.log("Miss Main!")}}
 
     //offhand attack
-    if (equipped_2 != shield)
-    {if(off_hit()>=enemy[11]){enemy[10]-=off_atk(), console.log("Hit Off!")}else{console.log("Miss Off!")}}
+    function off_hand_attack(enemy){if (equipped_2 != shield){if(off_hit()>=enemy[11]){enemy[10]-=off_atk(), console.log("Hit Off!")}else{console.log("Miss Off!")}}}
 
     //adjust HP and remove enemy on death
-    if(enemy[10]<1){remove_enemy(enemy), console.log("Dead!")}else{updated_hp_enemy(enemy)}
+    function update_enemy_state(enemy){if(enemy[10]<1){remove_enemy(enemy), console.log("Dead!")}else{updated_hp_enemy(enemy), attack_back(enemy)}}
 
-    attack_back(enemy)
+    //resets attack animation of attacking creature
+    function change_atk_idl(enemy){}
 
-    player_hp_bar();
-}
 
 function attack_back(enemy){
     dmg = 0
@@ -473,26 +527,31 @@ function attack_back(enemy){
     console.log("Damage "+dmg+", Player HP "+player_hp);
 }
 
-function flee(){}
-function dodge(){}
-
 function player_hp_bar(){
-var php = "";//create HP Bar
-for (i = 1; i<=(Math.floor(player_hp/100));i++)      {php+="🟧"};
-for (i = 1; i<=(Math.floor(player_hp%100/10));i++)   {php+="🟪"};
-for (i = 1; i<=(Math.floor(player_hp%10));i++)       {php+="🟥"};
-//Check if player dead
-if (player_hp == 0){php="💀"}
-//Write HP Bar for player
-document.getElementById("player_bar").innerHTML = php
+
+    //initial setup
+    if (player_hp == -99){player_rest("set")}
+
+    var php = "";//create HP Bar
+    for (i = 1; i<=(Math.floor(player_hp/100));i++)      {php+="🟧"};   
+    for (i = 1; i<=(Math.floor(player_hp%100/10));i++)   {php+="🟪"};
+    for (i = 1; i<=(Math.floor(player_hp%10));i++)       {php+="🟥"};
+    
+    //Check if player dead
+    if (player_hp == 0){php="💀"}
+
+    //Write HP Bar for player
+    document.getElementById("player_bar").innerHTML = php
 
 }
 
 
 function add_enemy(type){
     
+    //get playerhp on enemy spawn
+    player_hp_bar
+
     //check free spot to be apointed
-    
     var parent = document.getElementById('monster_bar');
     var children = Array.from(parent.children);
     var ids = children.map(element => {return element.id;});
@@ -538,17 +597,19 @@ function remove_enemy(enemy){
     monster.parentNode.removeChild(monster);
 }
 
+
 //update hp bar of single enemy
 function updated_hp_enemy(enemy){
 
-hp="💀";
-for (i = 1; i<=(Math.floor(enemy[10]/100));i++)      {hp+="🟧"};
-for (i = 1; i<=(Math.floor(enemy[10]%100/10));i++)   {hp+="🟪"};
-for (i = 1; i<=(Math.floor(enemy[10]%10));i++)       {hp+="🟥"};
-hp+="💀";
+    hp="💀";
+    for (i = 1; i<=(Math.floor(enemy[10]/100));i++)      {hp+="🟧"};
+    for (i = 1; i<=(Math.floor(enemy[10]%100/10));i++)   {hp+="🟪"};
+    for (i = 1; i<=(Math.floor(enemy[10]%10));i++)       {hp+="🟥"};
+    hp+="💀";
 
-document.getElementById("hp"+enemy[30]).innerHTML = '    '+ hp;
+    document.getElementById("hp"+enemy[30]).innerHTML = '    '+ hp;
 }
+
 
 //take breaks for hp, set seperate var for hp combat
 function player_rest(option){
@@ -942,14 +1003,14 @@ switch(a){
 case 0:RAC_ARRAY =  [1, 1, 1, 0, 0, 0, 0]; break;
 case 1:RAC_ARRAY =  [0, 1, 0, 1, 1, 0, 0]; break;
 case 2:RAC_ARRAY =  [0, 1, 0, 0, 1, 1, 0]; break;
-case 3:RAC_ARRAY =  [0, 0, 0, 2, 0, 1, 0]; break;//
+case 3:RAC_ARRAY =  [0, 0, 0, 2, 0, 1, 0]; break;
 case 4:RAC_ARRAY =  [0, 2, 0, 0, 0, 0, 0]; break;
 case 5:RAC_ARRAY =  [3, 0, 0, 0, 0, -1, 0]; break;
 case 6:RAC_ARRAY =  [0, 1, 0, 2, 0, 0, 0]; break;
-case 7:RAC_ARRAY =  [1, 0, 2, 0, 0, 0, 0]; break;//
+case 7:RAC_ARRAY =  [1, 0, 2, 0, 0, 0, 0]; break;
 case 8:RAC_ARRAY =  [0, 0, 0, 0, 0, 0, 0]; break;
-case 9:RAC_ARRAY =  [1, 1, 0, 1, 2, 2,-60]; break;//
-case 10:RAC_ARRAY = [1, 0, 1, 2, 1, 2,-60]; break;//
+case 9:RAC_ARRAY =  [1, 1, 0, 1, 2, 2,-60]; break;
+case 10:RAC_ARRAY = [1, 0, 1, 2, 1, 2,-60]; break;
 case 11:RAC_ARRAY = [0, 0, 0, 0, 0, 0, 0]; break;
 case 12:RAC_ARRAY = [0, 0, 0, 0, 0, 0, 0]; break;
 case 13:RAC_ARRAY = [0, 0, 0, 0, 0, 0, 0]; break;

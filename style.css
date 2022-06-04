@@ -800,6 +800,56 @@ text-transform: none;
           Fighting a Goblin 
 #######################################################################################################################################*/
 
+.enemy_buttons {  display: grid;
+  grid-template-columns: repeat(8, 100px);
+  grid-template-rows: 50px;
+  gap: 25px 25px;
+  grid-auto-flow: row;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-areas:
+    ". . . . . . . .";
+  width: 100%;
+  height: 100px;
+}
+
+.enemy_button{
+  font-size: 20PX;
+  letter-spacing: 1.5px;
+  word-spacing: 1.2px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align: center;
+  background-color: rgb(232, 203, 159);
+  padding-top: 0;
+  padding: bottom 0;
+  color: rgba(21, 14, 6, 0.836);
+  width: 100px;
+}
+
+.bar_atk{  
+  position:relative;
+  -webkit-animation:attack2 0.8s ease-in-out alternate infinite;
+}
+
+.player_idle  {
+
+  width:160px;
+  height:260px;
+  position:relative;
+  cursor: pointer;
+  -webkit-animation:idle 5s ease-in-out alternate infinite;
+}
+
+.enemy_atk_2 {
+
+  width:160;
+  height:260;
+  position:relative;
+  -webkit-animation:attack2 0.8s ease-in-out alternate infinite;
+}
+
+
 .hp_bar{
   padding: 10px;
   color: red;
@@ -820,12 +870,12 @@ text-transform: none;
   -webkit-animation:glide 1.3s ease-in-out alternate infinite;
 }
 
-.goblin_atk1 {
+.enemy_atk_1 {
 
   width:240px;
   height:240px;
   position:relative;
-  -webkit-animation:attack1 2.5s ease-in-out alternate infinite;
+  -webkit-animation:attack1 0.5s ease-in-out alternate infinite;
 }
 
 
@@ -841,17 +891,43 @@ text-transform: none;
   }
 }
 
+@-webkit-keyframes idle  {
+  from {
+     left:6px;
+     top:5px;
+  }
+  
+  to {
+     left:9px;
+     top:8px;
+  }
+}
+
 @-webkit-keyframes attack1{
   from {
-     left:550px;
+     left:0px;
      top:0px;
   }
   
   to {
-     left:-550px;
-     top:0px;
+     left:0px;
+     top:-400px;
   }
 }
+
+@-webkit-keyframes attack2{
+  from {
+     left:0px;
+     top:0px;
+  }
+  
+  to {
+     left:0px;
+     top:400px;
+  }
+}
+
+
 
 /* #######################################################################################################################################
           Body 
@@ -1272,8 +1348,6 @@ opacity: 1;
     display: grid;
     grid-template-columns: repeat(4, 200px);
     grid-template-rows:repeat(6, 450px);
-    grid-auto-columns: 1fr;
-    grid-auto-rows: 1fr;
     gap: 10px 1%;
     height: 4800px;
     grid-auto-flow: row;
@@ -1292,14 +1366,28 @@ opacity: 1;
     width: 100%;
     height: 3000px;
     overflow: hidden;
-  }
+}
 
-  .store_pic{
-    width: 100%;
-    min-height: 250px ;
-    max-height: 250px;
-    overflow: hidden;
-  }
+
+.store_pic{
+  border-radius: 6px;
+  width: 100%;
+  min-width: 200px;
+  min-height: 55%;
+  max-height: 55%;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+.store_pic_long{
+  border-radius: 6px;
+  width: 100%;
+  min-width: 200px;
+  min-height: 60%;
+  max-height: 60%;
+  cursor: pointer;
+  object-fit: contain;
+}
 
   .st_01{ grid-area: st_01; }
 
