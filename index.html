@@ -160,8 +160,8 @@
 
   <div class="body_grid">
     <div class="b_01">Gender</div>
-      <div class="backgrnd_01"> <label for="gender_01"><img src="/pica/female_01.jpg"    class="pic_16" id="bod_0"> <input type="radio" name="genderradio" class ="hidden" onchange="setbody(0)" id="gender_01" /> <div class="t_01">Female</div></div>
-      <div class="backgrnd_01"> <label for="gender_02"><img src="/pica/male_01.jpg"      class="pic_16" id="bod_1"> <input type="radio" name="genderradio" class ="hidden" onchange="setbody(1)" id="gender_02" /> <div class="t_01">Male</div></div>
+      <div class="backgrnd_01"> <label for="gender_01"><img src="/pica/female_20.jpg"    class="pic_16" id="bod_0"> <input type="radio" name="genderradio" class ="hidden" onchange="setbody(0)" id="gender_01" /> <div class="t_01">Female</div></div>
+      <div class="backgrnd_01"> <label for="gender_02"><img src="/pica/male_20.jpg"      class="pic_16" id="bod_1"> <input type="radio" name="genderradio" class ="hidden" onchange="setbody(1)" id="gender_02" /> <div class="t_01">Male</div></div>
       <div class="backgrnd_01"> <label for="gender_03"><img src="/pica/elemental_02.jpg" class="pic_16" id="bod_2"> <input type="radio" name="genderradio" class ="hidden" onchange="setbody(2)" id="gender_03" /> <div class="t_01">Genderless</div></div>
   </div>
 
@@ -323,30 +323,77 @@
   <div class="titel">Store</div>
   <div class="store_grid">
       <div class="st_01"> <img src="/pica/store_01.jpg"  class="pic_09"> </div>
-      <div class="bck_1"> <img src="/pica/dagger_01.png"          class="store_pic_long" onclick="buy_item(dagger)">             <div class="t_0002">Dagger</div><div id="">       1d4+Dex/Str<br><br> No training<br>One-handedbr <br>Slashing<br><br> 4 Gold</div><div></div></div>
-      <div class="bck_1"> <img src="/pica/sword_01.png"           class="store_pic_long" onclick="buy_item(shortsword)">         <div class="t_0002">Shortsword</div><div id="">   1d6+Str<br><br> Light Training<br>One-handed <br>Slashing<br><br> 10 Gold</div></div>
-      <div class="bck_1"> <img src="/pica/axe_01.png"             class="store_pic_long" onclick="buy_item(heavyaxe)">           <div class="t_0002">Heavy Axe</div><div id="">    1d8+Str<br><br>Heavy Training<br>One-handed <br>Slashing<br><br> 18 Gold</div></div>
-      <div class="bck_1"> <img src="/pica/hammer_01.png"          class="store_pic_long" onclick="buy_item(heavyhammer)" id="">  <div class="t_0002">Heavy Hammer</div><div id=""> 1d8+tr <br><br>Heavy Training<br>One-handed <br>Blunt<br><br> 22 Gold</div></div>
-      <div class="bck_1"> <img src="/pica/shield_06.png"          class="store_pic" onclick="buy_item(shield)" id="">       <div class="t_0002">Shield</div><div id="">       2 AC<br><br>Shield Training <br> Off Handed <br><br><br> 10 Gold</div></div>
-      <div class="bck_1"> <img src="/pica/armor_light_03.png"     class="store_pic" onclick="buy_item(armorlight)" id="">   <div class="t_0002">Armor Light</div><div id="">  12+Dex AC<br><br>Light Armor<br> <br> <br><br> 8 Gold <br></div></div>
-      <div class="bck_1"> <img src="/pica//medium_armor_01.png"   class="store_pic" onclick="buy_item(armormedium)" id="">  <div class="t_0002">Armor Medium</div><div id=""> 15+Dex(max2) AC<br><br>Medium Armor <br> <br> <br> <br>14 Gold <br></div></div>
-      <div class="bck_1"> <img src="/pica/heavy_armor_02.png"     class="store_pic" onclick="buy_item(platearmor)" id="">   <div class="t_0002">Plate Armor</div><div id="">  18 AC<br><br>Heavy Armor <br> <br> <br> <br>35 Gold <br></div></div>
+
+      <div class="bck_1"> <img src="/pica/morningstar_1.png"          class="store_pic_long" onclick="buy_item(dagger)">             <div class="t_0002">Dagger</div><div id="">       1d4+Dex/Str<br><br> No training<br>One-handedbr <br>Slashing<br> 4 Gold</div><div></div></div>
+      <div class="bck_1"> <img src="/pica/flail.png"     class="store_pic" onclick="buy_item(platearmor)" id="">   <div class="t_0002">Plate Armor</div><div id="">  18 AC<br><br>Heavy Armor <br> <br> <br> <br>35 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/zweihänder.png"           class="store_pic_long" onclick="buy_item(shortsword)">         <div class="t_0002">Shortsword</div><div id="">   1d6+Str<br><br> Light Training<br>One-handed <br>Slashing<br> 10 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/sword_1.png"             class="store_pic_long" onclick="buy_item(heavyaxe)">           <div class="t_0002">Heavy Axe</div><div id="">    1d8+Str<br><br>Heavy Training<br>One-handed <br>Slashing<br> 18 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/lance_1.png"          class="store_pic_long" onclick="buy_item(heavyhammer)" id="">  <div class="t_0002">Heavy Hammer</div><div id=""> 1d8+tr <br><br>Heavy Training<br>One-handed <br>Blunt<br> 22 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/degen.png"          class="store_pic_long" onclick="buy_item(heavyhammer)" id="">  <div class="t_0002">Heavy Hammer</div><div id=""> 1d8+tr <br><br>Heavy Training<br>One-handed <br>Blunt<br> 22 Gold</div></div>
+    
       
-      <div class="bck_1"> <label for="tr_7">  <img src="/pica/pray_03.jpg"        class="pic_08" id="tra_7">  <input type="checkbox"  class ="hidden" onclick="buy_item()"  id="tr_7" />  <div class="t_0002">NONE</div><div id=""><br>.</div></div>
-      <div class="bck_1"> <label for="tr_7">  <img src="/pica/pray_03.jpg"        class="pic_08" id="tra_7">  <input type="checkbox"  class ="hidden" onclick="buy_item()"  id="tr_7" />  <div class="t_0002">NONE</div><div id=""><br>.</div></div>
-      <div class="bck_1"> <label for="tr_7">  <img src="/pica/pray_03.jpg"        class="pic_08" id="tra_7">  <input type="checkbox"  class ="hidden" onclick="buy_item()" id="tr_7" />  <div class="t_0002">NONE</div><div id=""><br>.</div></div>        
-      <div class="bck_1"> <label for="tr_7">  <img src="/pica/pray_03.jpg"        class="pic_08" id="tra_7">  <input type="checkbox"  class ="hidden" onclick="buy_item()" id="tr_7" />  <div class="t_0002">NONE</div><div id=""><br>.</div></div>
-      <div class="bck_1"> <label for="tr_8">  <img src="/pica/pray_03.jpg"        class="pic_08" id="tra_8">  <input type="checkbox"  class ="hidden" onclick="buy_item()" id="tr_8" />  <div class="t_0002">NONE </div><div id=""><br>. </div></div>
-      <div class="bck_1"> <label for="tr_9">  <img src="/pica/pray_03.jpg"        class="pic_08" id="tra_9">  <input type="checkbox"  class ="hidden" onclick="buy_item()" id="tr_9" />  <div class="t_0002">NONE </div><div id=""><br>.</div></div>
-      <div class="bck_1"> <label for="tr_10"> <img src="/pica/pray_03.jpg"        class="pic_08" id="tra_10"> <input type="checkbox"  class ="hidden" onclick="buy_item()" id="tr_10" /> <div class="t_0002">NONE </div><div id=""><br>.</div></div>
-      <div class="bck_1"> <label for="tr_11"> <img src="/pica/pray_03.jpg"        class="pic_08" id="tra_11"> <input type="checkbox"  class ="hidden" onclick="buy_item()" id="tr_10" /> <div class="t_0002">NONE </div><div id=""><br>.</div></div>
+      <div class="bck_1"> <img src="/pica/hammer_3.png"          class="store_pic" onclick="buy_item(shield)" id="">       <div class="t_0002">Shield</div><div id="">       2 AC<br><br>Shield Training <br> Off Handed <br><br><br> 10 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/hammer_2.png"     class="store_pic" onclick="buy_item(armorlight)" id="">   <div class="t_0002">Armor Light</div><div id="">  12+Dex AC<br><br>Light Armor<br> <br> <br><br> 8 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica//hammer_1.png"   class="store_pic" onclick="buy_item(armormedium)" id="">  <div class="t_0002">Armor Medium</div><div id=""> 15+Dex(max2) AC<br><br>Medium Armor <br> <br> <br> <br>14 Gold <br></div></div>
 
-      <div class="bck_1"> <label for="tr_7">  <img src="/pica/pray_03.jpg"        class="pic_08" id="tra_7">  <input type="checkbox"  class ="hidden" onclick="buy_item()"  id="tr_7" />  <div class="t_0002">Shield</div><div id=""><br>.</div><div></div></div>
-      <div class="bck_1"> <label for="tr_7">  <img src="/pica/pray_03.jpg"        class="pic_08" id="tra_7">  <input type="checkbox"  class ="hidden" onclick="buy_item()"  id="tr_7" />  <div class="t_0002">Light Armor</div><div id=""><br>.</div><div></div></div>
-      <div class="bck_1"> <label for="tr_7">  <img src="/pica/pray_03.jpg"        class="pic_08" id="tra_7">  <input type="checkbox"  class ="hidden" onclick="buy_item()"  id="tr_7" />  <div class="t_0002">Medium Armor</div><div id=""><br>.</div><div></div></div>        
-      <div class="bck_1"> <label for="tr_7">  <img src="/pica/pray_03.jpg"        class="pic_08" id="tra_7">  <input type="checkbox"  class ="hidden" onclick="buy_item()"  id="tr_7" />  <div class="t_0002">Heavy Armor</div><div id=""><br>.</div><div></div></div>
+      <div class="bck_1"> <img src="/pica/axe_1.png"     class="store_pic" onclick="buy_item(armorlight)" id="">   <div class="t_0002">Armor Light</div><div id="">  12+Dex AC<br><br>Light Armor<br> <br> <br><br> 8 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/axe_2.png"   class="store_pic" onclick="buy_item(armormedium)" id="">  <div class="t_0002">Armor Medium</div><div id=""> 15+Dex(max2) AC<br><br>Medium Armor <br> <br> <br> <br>14 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/axe_3.png"     class="store_pic" onclick="buy_item(platearmor)" id="">   <div class="t_0002">Plate Armor</div><div id="">  18 AC<br><br>Heavy Armor <br> <br> <br> <br>35 Gold <br></div></div>
 
-  </div>
+      <div class="bck_1"> <img src="/pica/handcrossbow.png"          class="store_pic_long" onclick="buy_item(dagger)">             <div class="t_0002">Dagger</div><div id="">       1d4+Dex/Str<br><br> No training<br>One-handedbr <br>Slashing<br> 4 Gold</div><div></div></div>
+      <div class="bck_1"> <img src="/pica/crossbow.png"           class="store_pic_long" onclick="buy_item(shortsword)">         <div class="t_0002">Shortsword</div><div id="">   1d6+Str<br><br> Light Training<br>One-handed <br>Slashing<br> 10 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/crossbow_3.png"             class="store_pic_long" onclick="buy_item(heavyaxe)">           <div class="t_0002">Heavy Axe</div><div id="">    1d8+Str<br><br>Heavy Training<br>One-handed <br>Slashing<br> 18 Gold</div></div>
+       <div class="bck_1"> <img src="/pica/blowgun_1.png"          class="store_pic" onclick="buy_item(shield)" id="">       <div class="t_0002">Shield</div><div id="">       2 AC<br><br>Shield Training <br> Off Handed <br><br><br> 10 Gold</div></div>
+
+      <div class="bck_1"> <img src="/pica/shield_1.png"     class="store_pic" onclick="buy_item(armorlight)" id="">   <div class="t_0002">Armor Light</div><div id="">  12+Dex AC<br><br>Light Armor<br> <br> <br><br> 8 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/shield_2.png"   class="store_pic" onclick="buy_item(armormedium)" id="">  <div class="t_0002">Armor Medium</div><div id=""> 15+Dex(max2) AC<br><br>Medium Armor <br> <br> <br> <br>14 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/shield_3.png"     class="store_pic" onclick="buy_item(platearmor)" id="">   <div class="t_0002">Plate Armor</div><div id="">  18 AC<br><br>Heavy Armor <br> <br> <br> <br>35 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/shield_4.png"          class="store_pic_long" onclick="buy_item(dagger)">             <div class="t_0002">Dagger</div><div id="">       1d4+Dex/Str<br><br> No training<br>One-handedbr <br>Slashing<br> 4 Gold</div><div></div></div>
+      <div class="bck_1"> <img src="/pica/shield_5.png"           class="store_pic_long" onclick="buy_item(shortsword)">         <div class="t_0002">Shortsword</div><div id="">   1d6+Str<br><br> Light Training<br>One-handed <br>Slashing<br> 10 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/shield_6.png"          class="store_pic" onclick="buy_item(shield)" id="">       <div class="t_0002">Shield</div><div id="">       2 AC<br><br>Shield Training <br> Off Handed <br><br><br> 10 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/shield_7.png"           class="store_pic_long" onclick="buy_item(shortsword)">         <div class="t_0002">Shortsword</div><div id="">   1d6+Str<br><br> Light Training<br>One-handed <br>Slashing<br> 10 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/shield_8.png"          class="store_pic" onclick="buy_item(shield)" id="">       <div class="t_0002">Shield</div><div id="">       2 AC<br><br>Shield Training <br> Off Handed <br><br><br> 10 Gold</div></div>
+
+      <div class="bck_1"> <img src="/pica/light_armor_1.png"             class="store_pic_long" onclick="buy_item(heavyaxe)">           <div class="t_0002">Heavy Axe</div><div id="">    1d8+Str<br><br>Heavy Training<br>One-handed <br>Slashing<br> 18 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/light_armor_2.png"          class="store_pic_long" onclick="buy_item(heavyhammer)" id="">  <div class="t_0002">Heavy Hammer</div><div id=""> 1d8+tr <br><br>Heavy Training<br>One-handed <br>Blunt<br> 22 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/light_armor_3.png"          class="store_pic" onclick="buy_item(shield)" id="">       <div class="t_0002">Shield</div><div id="">       2 AC<br><br>Shield Training <br> Off Handed <br><br><br> 10 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/light_armor_4.png"     class="store_pic" onclick="buy_item(armorlight)" id="">   <div class="t_0002">Armor Light</div><div id="">  12+Dex AC<br><br>Light Armor<br> <br> <br><br> 8 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/light_armor_5.png"   class="store_pic" onclick="buy_item(armormedium)" id="">  <div class="t_0002">Armor Medium</div><div id=""> 15+Dex(max2) AC<br><br>Medium Armor <br> <br> <br> <br>14 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/light_armor_6.png"     class="store_pic" onclick="buy_item(platearmor)" id="">   <div class="t_0002">Plate Armor</div><div id="">  18 AC<br><br>Heavy Armor <br> <br> <br> <br>35 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/medium_armor_4.png"          class="store_pic_long" onclick="buy_item(heavyhammer)" id="">  <div class="t_0002">Heavy Hammer</div><div id=""> 1d8+tr <br><br>Heavy Training<br>One-handed <br>Blunt<br> 22 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/medium_armor_5.png"          class="store_pic" onclick="buy_item(shield)" id="">       <div class="t_0002">Shield</div><div id="">       2 AC<br><br>Shield Training <br> Off Handed <br><br><br> 10 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/medium_armor_6.png"     class="store_pic" onclick="buy_item(armorlight)" id="">   <div class="t_0002">Armor Light</div><div id="">  12+Dex AC<br><br>Light Armor<br> <br> <br><br> 8 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/medium_armor_7.png"   class="store_pic" onclick="buy_item(armormedium)" id="">  <div class="t_0002">Armor Medium</div><div id=""> 15+Dex(max2) AC<br><br>Medium Armor <br> <br> <br> <br>14 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/medium_armor_8.png"     class="store_pic" onclick="buy_item(platearmor)" id="">   <div class="t_0002">Plate Armor</div><div id="">  18 AC<br><br>Heavy Armor <br> <br> <br> <br>35 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/medium_armor_9.png"          class="store_pic_long" onclick="buy_item(dagger)">             <div class="t_0002">Dagger</div><div id="">       1d4+Dex/Str<br><br> No training<br>One-handedbr <br>Slashing<br> 4 Gold</div><div></div></div>
+      <div class="bck_1"> <img src="/pica/medium_armor_10.png"           class="store_pic_long" onclick="buy_item(shortsword)">         <div class="t_0002">Shortsword</div><div id="">   1d6+Str<br><br> Light Training<br>One-handed <br>Slashing<br> 10 Gold</div></div>
+         
+      <div class="bck_1"> <img src="/pica/heavy_armor_1.png"          class="store_pic_long" onclick="buy_item(heavyhammer)" id="">  <div class="t_0002">Heavy Hammer</div><div id=""> 1d8+tr <br><br>Heavy Training<br>One-handed <br>Blunt<br> 22 Gold</div></div> 
+      <div class="bck_1"> <img src="/pica/heavy_armor_2.png"          class="store_pic_long" onclick="buy_item(heavyhammer)" id="">  <div class="t_0002">Heavy Hammer</div><div id=""> 1d8+tr <br><br>Heavy Training<br>One-handed <br>Blunt<br> 22 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/heavy_armor_3.png"          class="store_pic" onclick="buy_item(shield)" id="">       <div class="t_0002">Shield</div><div id="">       2 AC<br><br>Shield Training <br> Off Handed <br><br><br> 10 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/heavy_armor_4.png"     class="store_pic" onclick="buy_item(armorlight)" id="">   <div class="t_0002">Armor Light</div><div id="">  12+Dex AC<br><br>Light Armor<br> <br> <br><br> 8 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/heavy_armor_5.png"   class="store_pic" onclick="buy_item(armormedium)" id="">  <div class="t_0002">Armor Medium</div><div id=""> 15+Dex(max2) AC<br><br>Medium Armor <br> <br> <br> <br>14 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/heavy_armor_6.png"     class="store_pic" onclick="buy_item(platearmor)" id="">   <div class="t_0002">Plate Armor</div><div id="">  18 AC<br><br>Heavy Armor <br> <br> <br> <br>35 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/heavy_armor_7.png"          class="store_pic_long" onclick="buy_item(dagger)">             <div class="t_0002">Dagger</div><div id="">       1d4+Dex/Str<br><br> No training<br>One-handedbr <br>Slashing<br> 4 Gold</div><div></div></div>
+    
+      <div class="bck_1"> <img src="/pica/heavy_helmet_1.png"           class="store_pic_long" onclick="buy_item(shortsword)">         <div class="t_0002">Shortsword</div><div id="">   1d6+Str<br><br> Light Training<br>One-handed <br>Slashing<br> 10 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/heavy_helmet_2.png"             class="store_pic_long" onclick="buy_item(heavyaxe)">           <div class="t_0002">Heavy Axe</div><div id="">    1d8+Str<br><br>Heavy Training<br>One-handed <br>Slashing<br> 18 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/heavy_helmet_3.png"          class="store_pic_long" onclick="buy_item(heavyhammer)" id="">  <div class="t_0002">Heavy Hammer</div><div id=""> 1d8+tr <br><br>Heavy Training<br>One-handed <br>Blunt<br> 22 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/heavy_helmet_4.png"          class="store_pic" onclick="buy_item(shield)" id="">       <div class="t_0002">Shield</div><div id="">       2 AC<br><br>Shield Training <br> Off Handed <br><br><br> 10 Gold</div></div>
+      
+      <div class="bck_1"> <img src="/pica/cape_1.png"          class="store_pic_long" onclick="buy_item(dagger)">             <div class="t_0002">Dagger</div><div id="">       1d4+Dex/Str<br><br> No training<br>One-handedbr <br>Slashing<br> 4 Gold</div><div></div></div>
+      <div class="bck_1"> <img src="/pica/cape_2.png"           class="store_pic_long" onclick="buy_item(shortsword)">         <div class="t_0002">Shortsword</div><div id="">   1d6+Str<br><br> Light Training<br>One-handed <br>Slashing<br> 10 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/cape_3.png"             class="store_pic_long" onclick="buy_item(heavyaxe)">           <div class="t_0002">Heavy Axe</div><div id="">    1d8+Str<br><br>Heavy Training<br>One-handed <br>Slashing<br> 18 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/cape_4.png"          class="store_pic_long" onclick="buy_item(heavyhammer)" id="">  <div class="t_0002">Heavy Hammer</div><div id=""> 1d8+tr <br><br>Heavy Training<br>One-handed <br>Blunt<br> 22 Gold</div></div>
+      
+      <div class="bck_1"> <img src="/pica/medium_boots_1.png"          class="store_pic" onclick="buy_item(shield)" id="">       <div class="t_0002">Shield</div><div id="">       2 AC<br><br>Shield Training <br> Off Handed <br><br><br> 10 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/light_boots_1.png"     class="store_pic" onclick="buy_item(armorlight)" id="">   <div class="t_0002">Armor Light</div><div id="">  12+Dex AC<br><br>Light Armor<br> <br> <br><br> 8 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/boots_medium_2.png"   class="store_pic" onclick="buy_item(armormedium)" id="">  <div class="t_0002">Armor Medium</div><div id=""> 15+Dex(max2) AC<br><br>Medium Armor <br> <br> <br> <br>14 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/medium_helmet_1.png"     class="store_pic" onclick="buy_item(platearmor)" id="">   <div class="t_0002">Plate Armor</div><div id="">  18 AC<br><br>Heavy Armor <br> <br> <br> <br>35 Gold <br></div></div>
+      <div class="bck_1"> <img src="/pica/mask_1.png"             class="store_pic_long" onclick="buy_item(heavyaxe)">           <div class="t_0002">Heavy Axe</div><div id="">    1d8+Str<br><br>Heavy Training<br>One-handed <br>Slashing<br> 18 Gold</div></div>
+      <div class="bck_1"> <img src="/pica/light_helmet_2.png"           class="store_pic_long" onclick="buy_item(shortsword)">         <div class="t_0002">Shortsword</div><div id="">   1d6+Str<br><br> Light Training<br>One-handed <br>Slashing<br> 10 Gold</div></div>
+     
+       </div>
 
 <!--Enemy spawn-->  
   <div class="enemy_buttons">
