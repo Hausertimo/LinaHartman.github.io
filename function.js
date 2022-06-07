@@ -2,22 +2,27 @@
 //                                                              Todoo in Africa
 //#######################################################################################################################################
 
-//lootboxac is bugged
+//intergrate items
 
 //xp
 
-//open Inventory with Icon in top left corner¨
+//adventure
+
+//open Inventory with Icon in top left corner
 
 //crit
 
 //add combat attack, dodge, flee outside -> rest -> get quest -> discover Item -> discover store
 
-
 //Add Twohanded support
 
 //Ranged Weapon
 
-//add 8 weapon and 3 helmets, 3 boots, 6 bodypeaces (4erreihe)
+//combat debugging
+
+//clearing up code
+
+//getting extended js files
 
 //#######################################################################################################################################
 //                                                          Testting
@@ -263,23 +268,88 @@ switch (mod){
 //                                                              Items
 //#######################################################################################################################################
 
-var            //dmg dice mod    hand      name/id     weight price
-dagger         = [4,  1,"either","either", "dagger"      ,1 , 4, "/pica/dagger_01.png", "none"],
+var            //dmg dice mod    hand      name/id     weight price, pic            ,   train
+dagger         = [4,  1,"either","either", "dagger"      ,1 , 4, "/pica/dagger_0.png", "none"],
 shortsword     = [6,  1, "str", "either", "shortsword" ,12, 10, "/pica/sword_01.png", "light"],
 lightaxe       = [6,  1, "str", "either", "lightaxe"   ,12, 10, "/pica/axe_01.png", "light"],
 heavyaxe       = [8,  1, "str", "either", "heavyaxe"   ,18, 18, "/pica/axe_01.png", "heavy"],
 lighthammer    = [6,  1, "str", "either", "lighthammer"   ,17, 8, "/pica/hammer_01.png", "light"],
 heavyhammer    = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/hammer_01.png", "heavy"],
-rapier         = [6,  1, "dex", "either", "rapier"      ,12, 10],
-longsword      = [8,  1, "str",   "main", "longsword"   ,24, 10],
-shield         = [0,  2,"false", "shield","shield"    ,8 , 10, "/pica/shield_06.png", "shield"],
+
+sword_1        = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/sword_2.png", "heavy"],
+sword_2        = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/degen.png", "heavy"],
+rapier_1       = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/sword_1.png", "heavy"],
+lance_1        = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/lance_1.png", "heavy"],
+morningstar_1  = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/morningstar_1.png", "heavy"],
+flail_1        = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/flail.png", "heavy"],
+hammer_1       = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/hammer_3.png", "heavy"],
+hammer_2       = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/hammer_2.png", "heavy"],
+hammer_3       = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/hammer_1.png", "heavy"],
+axe_1          = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/axe_1.png", "heavy"],
+axe_2          = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/ace_2.png", "heavy"],
+axe_3          = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/axe_3.png", "heavy"],
+
+shield         = [0,  2,"false", "shield","shield_1"    ,8 , 10, "/pica/shield_1.png", "shield"],
+shield_1       = [0,  2,"false", "shield","shield_1"    ,8 , 10, "/pica/shield_1.png", "shield"],
+shield_2       = [0,  2,"false", "shield","shield_2"    ,8 , 10, "/pica/shield_2.png", "shield"],
+shield_3       = [0,  2,"false", "shield","shield_3"    ,8 , 10, "/pica/shield_3.png", "shield"],
+shield_4       = [0,  2,"false", "shield","shield_4"    ,8 , 10, "/pica/shield_4.png", "shield"],
+shield_5       = [0,  2,"false", "shield","shield_5"    ,8 , 10, "/pica/shield_5.png", "shield"],
+shield_6       = [0,  2,"false", "shield","shield_6"    ,8 , 10, "/pica/shield_6.png", "shield"],
+shield_7       = [0,  2,"false", "shield","shield_7"    ,8 , 10, "/pica/shield_7.png", "shield"],
+shield_8       = [0,  2,"false", "shield","shield_8"    ,8 , 10, "/pica/shield_8.png", "shield"],
+
+light_armor    = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_1.png"],
+light_armor_1  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_1.png"],
+light_armor_2  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_2.png"],
+light_armor_3  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_3.png"],
+light_armor_4  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_4.png"],
+light_armor_5  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_5.png"],
+light_armor_6  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_6.png"],
+light_armor_7  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_7.png"],
+light_armor_8  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_8.png"],
+
+medium_armor   = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_1.png"],
+medium_armor_1 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_1.png"],
+medium_armor_2 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_2.png"],
+medium_armor_3 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_3.png"],
+medium_armor_4 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_4.png"],
+medium_armor_5 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_5.png"],
+medium_armor_6 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_6.png"],
+medium_armor_7 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_7.png"],
+medium_armor_8 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_8.png"],
+
+heavy_armor    = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_1.png"],
+heavy_armor_1  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_1.png"],
+heavy_armor_2  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_2.png"],
+heavy_armor_3  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_3.png"],
+heavy_armor_4  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_4.png"],
+heavy_armor_5  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_5.png"],
+heavy_armor_6  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_6.png"],
+heavy_armor_7  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_7.png"],
+heavy_armor_8  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_8.png"],
+
+cape_1         = [0, 0,  "false",   "head", "cape", 2,  4],
+cape_2         = [0, 0,  "false",   "head", "cape", 2,  4],
+cape_3         = [0, 0,  "false",   "head", "cape", 2,  4],
+cape_4         = [0, 0,  "false",   "head", "cape", 2,  4],
+
+helmet_1       = [0, 0,  "false",   "head", "helmet", 2,  4],
+helmet_2       = [0, 0,  "false",   "head", "helmet", 2,  4],
+helmet_3       = [0, 0,  "false",   "head", "helmet", 2,  4],
+helmet_4       = [0, 0,  "false",   "head", "helmet", 2,  4],
+
+boots_1        = [0, 0,  "false",   "feet", "boots", 2,  5],
+boots_2        = [0, 0,  "false",   "feet", "boots", 2,  5],
+boots_3        = [0, 0,  "false",   "feet", "boots", 2,  5],
+boots_4        = [0, 0,  "false",   "feet", "boots", 2,  5];
 
 
-armorlight         = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_03.png"],
-armormedium        = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_01.png"],
-platearmor         = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_02.png"],
+armorlight     = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_03.png"],
+armormedium    = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_01.png"],
+platearmor     = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_02.png"],
 
-helmet        = [0, 0,  "false",   "head", "helmet", 2,  4],
+helmet          = [0, 0,  "false",   "head", "helmet", 2,  4],
 
 boots          = [0, 0,  "false",   "feet", "boots", 2,  5];
 
@@ -318,20 +388,22 @@ function calc_ac(){
     }
 
     //helmet AC
-    switch (equipped_0[4]){
+    switch (equipped_0[3]){
         case "helmet": AC+=equipped_0[1]; break;
         default: break;
     }
     //boot AC
     
-    switch (equipped_4[4]){
+    switch (equipped_4[3]){
         case "boots": AC+=equipped_4[1];break;
         default: break;
 
     }
 
+    console.log(equipped_2[3])
+    
     //shield AC
-    switch (equipped_2[4]){
+    switch (equipped_2[3]){
         case "shield":if(train_mod[50]){AC+=equipped_2[1]}else{AC+=Math.floor(equipped_2[1]/2)}; break; 
         default: break;
     }
@@ -429,8 +501,16 @@ function get_item_equipped(){
         case "heavyhammer": equipped_2 = heavyhammer;   break;
         case "rapier":      equipped_2 = rapier;        break;
         case "longsword":   equipped_2 = longsword;     break;
-        case "shield":      equipped_2 = shield;        break;
-        default:            equipped_2 = false;        break;    
+
+        case "shield_1":    equipped_2 = shield;        break;
+        case "shield_2":    equipped_2 = shield;        break;
+        case "shield_3":    equipped_2 = shield;        break;
+        case "shield_4":    equipped_2 = shield;        break;
+        case "shield_5":    equipped_2 = shield;        break;
+        case "shield_6":    equipped_2 = shield;        break;
+        case "shield_7":    equipped_2 = shield;        break;
+        case "shield_8":    equipped_2 = shield;        break;
+        default:            equipped_2 = false;         break;    
         }
 
 
@@ -737,8 +817,8 @@ function getpalce(targetid){
         for(i=0; i<22;i++){
             if (targetid == "inventory_"+i) return true
         }
-        //console.log(targetid);
-        //console.log(dragitem);
+        console.log(targetid);
+        console.log(dragitem);
 
 
     switch (targetid){
