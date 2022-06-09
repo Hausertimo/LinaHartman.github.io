@@ -2,7 +2,9 @@
 //                                                              Todoo in Africa
 //#######################################################################################################################################
 
-//intergrate items
+//magic 
+
+//intergrate items 
 
 //xp
 
@@ -223,7 +225,7 @@ function closeSide(id){
 var train_mod=[]; for(var i = 0; i<80; i++){train_mod[i]=0;}
 
 //                  str,dex5
-function player_check(mod){
+function player_safe(mod){
 
 switch (mod){
     case "str":return str_mod+train_mod[6]   + mathRandomInt(1,20);
@@ -276,18 +278,18 @@ heavyaxe       = [8,  1, "str", "either", "heavyaxe"   ,18, 18, "/pica/axe_01.pn
 lighthammer    = [6,  1, "str", "either", "lighthammer"   ,17, 8, "/pica/hammer_01.png", "light"],
 heavyhammer    = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/hammer_01.png", "heavy"],
 
-sword_1        = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/sword_2.png", "heavy"],
-sword_2        = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/degen.png", "heavy"],
-rapier_1       = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/sword_1.png", "heavy"],
-lance_1        = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/lance_1.png", "heavy"],
-morningstar_1  = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/morningstar_1.png", "heavy"],
-flail_1        = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/flail.png", "heavy"],
-hammer_1       = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/hammer_3.png", "heavy"],
-hammer_2       = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/hammer_2.png", "heavy"],
-hammer_3       = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/hammer_1.png", "heavy"],
-axe_1          = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/axe_1.png", "heavy"],
-axe_2          = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/ace_2.png", "heavy"],
-axe_3          = [50, 8, "str", "either", "heavyhammer"   ,17, 8, "/pica/axe_3.png", "heavy"],
+sword_1        = [6, 1, "str", "either", "heavyhammer"   ,17, 8, "/pica/sword_1.png", "heavy"],
+sword_2        = [6, 1, "str", "either", "heavyhammer"   ,17, 8, "/pica/degen.png", "heavy"],
+rapier_1       = [6, 1, "str", "either", "heavyhammer"   ,17, 8, "/pica/sword_2.png", "heavy"],
+lance_1        = [6, 1, "str", "either", "heavyhammer"   ,17, 8, "/pica/lance_1.png", "heavy"],
+morningstar_1  = [8, 1, "str", "either", "heavyhammer"   ,17, 8, "/pica/morningstar_1.png", "heavy"],
+flail_1        = [4, 3, "str", "both" ,  "heavyhammer"   ,17, 8, "/pica/flail.png", "heavy"],
+hammer_1       = [6, 1, "str", "either", "heavyhammer"   ,17, 8, "/pica/hammer_3.png", "heavy"],
+hammer_2       = [8, 1, "str", "either", "heavyhammer"   ,17, 8, "/pica/hammer_2.png", "heavy"],
+hammer_3       = [12,1, "str", "both",   "heavyhammer"   ,17, 8, "/pica/hammer_1.png", "heavy"],
+axe_1          = [6 ,1, "str", "either", "heavyhammer"   ,17, 8, "/pica/axe_1.png", "heavy"],
+axe_2          = [8, 1, "str", "either", "heavyhammer"   ,17, 8, "/pica/ace_2.png", "heavy"],
+axe_3          = [6, 2, "str", "both",   "heavyhammer"   ,17, 8, "/pica/axe_3.png", "heavy"],
 
 shield         = [0,  2,"false", "shield","shield_1"    ,8 , 10, "/pica/shield_1.png", "shield"],
 shield_1       = [0,  2,"false", "shield","shield_1"    ,8 , 10, "/pica/shield_1.png", "shield"],
@@ -299,35 +301,37 @@ shield_6       = [0,  2,"false", "shield","shield_6"    ,8 , 10, "/pica/shield_6
 shield_7       = [0,  2,"false", "shield","shield_7"    ,8 , 10, "/pica/shield_7.png", "shield"],
 shield_8       = [0,  2,"false", "shield","shield_8"    ,8 , 10, "/pica/shield_8.png", "shield"],
 
-light_armor    = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_1.png"],
-light_armor_1  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_1.png"],
-light_armor_2  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_2.png"],
-light_armor_3  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_3.png"],
-light_armor_4  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_4.png"],
-light_armor_5  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_5.png"],
+light_armor    = [0, 11,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_1.png"],
+light_armor_1  = [0, 11,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_1.png"],
+light_armor_2  = [0, 11,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_2.png"],
+light_armor_3  = [0, 11,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_3.png"],
+light_armor_4  = [0, 11,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_4.png"],
+light_armor_5  = [0, 11,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_5.png"],
 light_armor_6  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_6.png"],
-light_armor_7  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_7.png"],
-light_armor_8  = [0, 12,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_8.png"],
+light_armor_7  = [0, 13,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_7.png"],
+light_armor_8  = [0, 14,  "dex", "armor", "armorlight" , 5,  8, "/pica/armor_light_8.png"],
 
-medium_armor   = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_1.png"],
-medium_armor_1 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_1.png"],
-medium_armor_2 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_2.png"],
-medium_armor_3 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_3.png"],
-medium_armor_4 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_4.png"],
-medium_armor_5 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_5.png"],
-medium_armor_6 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_6.png"],
+medium_armor   = [0, 11,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_1.png"],
+medium_armor_1 = [0, 12,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_1.png"],
+medium_armor_2 = [0, 12,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_2.png"],
+medium_armor_3 = [0, 13,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_3.png"],
+medium_armor_4 = [0, 13,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_4.png"],
+medium_armor_5 = [0, 14,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_5.png"],
+medium_armor_6 = [0, 14,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_6.png"],
 medium_armor_7 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_7.png"],
-medium_armor_8 = [0, 15,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_8.png"],
+medium_armor_8 = [0, 16,  "dex", "armor", "armormedium", 35, 14, "/pica//medium_armor_8.png"],
 
-heavy_armor    = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_1.png"],
-heavy_armor_1  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_1.png"],
-heavy_armor_2  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_2.png"],
-heavy_armor_3  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_3.png"],
-heavy_armor_4  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_4.png"],
-heavy_armor_5  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_5.png"],
-heavy_armor_6  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_6.png"],
-heavy_armor_7  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_7.png"],
+heavy_armor    = [0, 13,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_1.png"],
+heavy_armor_1  = [0, 13,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_1.png"],
+heavy_armor_2  = [0, 14,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_2.png"],
+heavy_armor_3  = [0, 14,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_3.png"],
+heavy_armor_4  = [0, 15,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_4.png"],
+heavy_armor_5  = [0, 15,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_5.png"],
+heavy_armor_6  = [0, 16,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_6.png"],
+heavy_armor_7  = [0, 17,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_7.png"],
 heavy_armor_8  = [0, 18,  "false", "armor", "platearmor", 80, 35, "/pica/heavy_armor_8.png"],
+
+armor_tattoo   = [0, 12,  "dex",   "armor", "body"      , 80, 35, "/pica/tattoo.png"],
 
 cape_1         = [0, 0,  "false",   "head", "cape", 2,  4],
 cape_2         = [0, 0,  "false",   "head", "cape", 2,  4],
@@ -365,12 +369,12 @@ ogre  =["ogre"  ,19, 8,16,5 , 7, 7, 6 ,  8, 2  ,   59, 11,  4  , "/pica/ogre.png
 giant =["giant" ,21, 8,19,5 , 9, 6, 8 ,  8, 6  ,  105, 13,  5  , "/pica/Hill_Giant.png" ],
 dragon=["dragon",23,12,21,18,15,17, 11,  10,6  ,  207, 19,  6  , "/pica/dragon.png"     ],
 
-qweqwe  =["ogre"  ,19, 8,16,5 , 7, 7, 6 ,  8, 2  ,   59, 11,  4  , "/pica/ogre.png"       ],
-qweqw =["giant" ,21, 8,19,5 , 9, 6, 8 ,  8, 6  ,  105, 13,  5  , "/pica/Hill_Giant.png" ],
-wqeqwe=["dragon",23,12,21,18,15,17, 11,  10,6  ,  207, 19,  6  , "/pica/dragon.png"     ],
-qweeqw  =["ogre"  ,19, 8,16,5 , 7, 7, 6 ,  8, 2  ,   59, 11,  4  , "/pica/ogre.png"       ],
-asfsd =["giant" ,21, 8,19,5 , 9, 6, 8 ,  8, 6  ,  105, 13,  5  , "/pica/Hill_Giant.png" ],
-swqe=["dragon",23,12,21,18,15,17, 11,  10,6  ,  207, 19,  6  , "/pica/dragon.png"     ];
+bandit  =["bandit"  ,19, 8,16,5 , 7, 7, 6 ,  8, 2  ,  59, 11,  4  , "/pica/ogre.png"       ],
+thief   =["thief"   ,21, 8,19,5 , 9, 6, 8 ,  8, 6  , 105, 13,  5  , "/pica/Hill_Giant.png" ],
+assasin =["assasin" ,23,12,21,18,15,17, 11, 10,6  ,  207, 19,  6  , "/pica/dragon.png"     ],
+skeleton=["skeleton",19, 8,16,5 , 7, 7, 6 ,  8, 2  ,  59, 11,  4  , "/pica/ogre.png"       ],
+zombie  =["zombies" ,21, 8,19,5 , 9, 6, 8 ,  8, 6  , 105, 13,  5  , "/pica/Hill_Giant.png" ],
+wolf    =["wolf"    ,23,12,21,18,15,17, 11,  10,6  , 207, 19,  6  , "/pica/dragon.png"     ];
 
 //'<img id="'enemy[0]'" onclick="fight1(enemy[0])" src="enem.y[13]" class="goblin_idle" alt="">
 //#######################################################################################################################################
@@ -383,7 +387,8 @@ function calc_ac(){
         case false:           AC = 10 +dex_mod + ACB;                   break;
         case "armorlight":    AC = equipped_3[1] + dex_mod + ACB;           if(train_mod[51]!= true){AC=10+dex_mod}; break;
         case "armormedium":   AC = equipped_3[1] + cap(dex_mod,2) + ACB;    if(train_mod[52]!= true){AC=10}; break;        
-        case "platearmor":    AC = equipped_3[1] + ACB;                     if(train_mod[53]!= true){AC=10}; break;
+        case "heavyarmor":    AC = equipped_3[1] + ACB;                     if(train_mod[53]!= true){AC=10}; break;
+        case "magicarmor":    AC = equipped_3[1] + psy_mod;             return;
         default:              AC = 10 +dex_mod + ACB;                   break;
     }
 
@@ -397,10 +402,8 @@ function calc_ac(){
     switch (equipped_4[3]){
         case "boots": AC+=equipped_4[1];break;
         default: break;
-
     }
 
-    console.log(equipped_2[3])
     
     //shield AC
     switch (equipped_2[3]){
@@ -414,9 +417,9 @@ function calc_ac(){
 //#######################################################################################################################################
 
 function main_hit(){
-var roll = (1000)//mathRandomInt(1,20)+weapon_mod(equipped_1[2])+weapon_train(equipped_1[8]))
-//console.log("Treffer total "+roll+": 1d20 + Weapon Modifier like str/dex "+weapon_mod(equipped_1[2])+" + Weapon Training "+weapon_train(equipped_1[8]))
-return(roll)
+var roll=(mathRandomInt(1,20)+weapon_mod(equipped_1[2])+weapon_train(equipped_1[8]));
+console.log("Treffer total "+roll+": 1d20 + Weapon Modifier"+weapon_mod(equipped_1[2])+" + Weapon Training "+weapon_train(equipped_1[8]));
+return(roll);
 }
 
 function main_atk(){
@@ -443,7 +446,7 @@ return (dmg);
 
 function weapon_train(train){
     switch(train){
-        case shield: return 0;
+        case "shield": return 0;
         case "light": if(train_mod[54]){return 2}else{return 0};
         case "heavy": if(train_mod[55]){return 2}else{return 0};
         case "none" : return 2;
@@ -455,6 +458,13 @@ function weapon_mod(mod){
 switch(mod){
     case    "str":return str_mod;
     case    "dex":return dex_mod;
+    case    "con":return con_mod;
+    case    "int":return int_mod;
+    case    "psy":return psy_mod;
+    case    "cha":return cha_mod;
+    case"warlock":return psy_mod;
+    case "wizard":return int_mod;
+    case "magica":return Math.max(int_mod, psy_mod);
     case "either":return Math.max(str_mod, dex_mod);
     case  "fasle":return 0;
     default: return 0;
@@ -525,9 +535,9 @@ function get_item_equipped(){
 
     //Boots
     switch (getchildidbyid('feet')){
-        case false: equipped_4 = false; break; 
-        case "boots": equipped_4 = boots; break; 
-        default:    equipped_3 = false; break; 
+        case false:  equipped_4 = false; break; 
+        case "boots":equipped_4 = boots; break; 
+        default:     equipped_3 = false; break; 
         }
 }
  
@@ -547,7 +557,6 @@ var enemy_0, enemy_1, enemy_2, enemy_3, enemy_4, enemy_5, enemy_6, enemy_7, play
 
 //cheat healthgain
 function add_hp(number){player_hp+=number; player_hp_bar()}
-
 
 //let people change their avatar
 function changepicture(event){alert(event)}
@@ -1391,3 +1400,6 @@ function settrain(a){
 
 }
 
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function charimg(){input = imgurl.value, innerhtmlbyid("charpic",'<img src="'+input+'" id="player_char" class="player_idle" ></img>');}
